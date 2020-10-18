@@ -1,0 +1,94 @@
+# ansible-playbook configure_automation_user.yaml -i inventories/dev/hosts --vault-id ~/.tokens/vault.txt --limit 'localhost, test_server'
+
+- import_playbook: ssh_keyscan.yaml
+
+- hosts: all
+  strategy: free
+  
+  vars:
+    ssh_user: automation
+    ssh_public_key: 
+      "ssh-rsa \
+      AAAAB3NzaC1yc2EAAAADAQABAAABAQDUei9OBBs3\
+      +JmfdsONAKC+Eqt6ILWmUH09vKwwtxBrWSsGo45K\
+      uH3YO+Rpmg88KNhiMJw8kRicz2ZsTvtvmg+lipdU\
+      LZBiUBtNa119xWYaRDFckG6d/7p7B0WXbE8I7/vX\
+      tFvfyhzFTHW7eqmtrlZkWt2DBaZLcufRa0AJMpuC\
+      QDwU6XVVdsGyggftff56L1YSH2etKXtPtjxOicpk\
+      Iq+w8ebA/FYOQqKcQhqsSBigYV5ydfXO73fbG0UO\
+      2WwJskBmbF0peudL41cHN5aenbwlJdzb5bU/ajbf\
+      wC7DIEVQMcyYEqpNlqCupsVWeUBIH2xz4jDPGwZc\
+      k7F8p6bQC9Bn \
+      automation@ub50194"
+  
+  vars_prompt:
+
+    - name: ansible_user
+      prompt: "What is your m-account username?"
+      private: no 
+
+    - name: ansible_ssh_pass
+      prompt: "What is your m-account password?"
+      private: yes
+
+  tasks:
+
+    - name: "Add and configure `{{ ssh_user }}` user"
+      user:
+        name: "{{ ssh_user }}"
+        append: yes
+        groups: 
+          - sudo
+        create_home: yes
+        expires: -1
+        password_lock:  yes
+        state: present
+      become: yes
+
+    - name: "Configure Bash"
+      user:
+        name: automation
+        shell: /bin/bash
+      become: yes
+
+    - name: "Add `{{ ssh_user }}` public ssh key to authorized_keys"
+      authorized_key:
+        user: "{{ ssh_user }}"
+        state: present
+        key: "{{ ssh_public_key }}"
+      become: yes
+
+    - name: "Remove password expiry for automation user"
+      shell: chage -I -1 -m 0 -M 99999 -E -1 automation
+      become: yes
+
+    - name: "Copy the `automation` sudoers configuration file over"
+      copy: 
+        src: automation
+        dest: /etc/sudoers.d/automation
+        mode: 0440
+        group: root
+        owner: root
+      become: yes
+
+    - name: "Configure Bash"
+      user:
+        name: automation
+        shell: /bin/bash
+      become: yes
+
+    - name: "Ensure automation user has access to cron"
+      lineinfile:
+        path: /etc/cron.allow
+        line: automation
+        state: present
+      become: yes
+
+    - name: "Create directory for configuration files"
+      file:
+        path: "{{ app_data }}"
+        mode: 0755
+        state: directory
+        owner: automation
+        group: automation
+      become: yes

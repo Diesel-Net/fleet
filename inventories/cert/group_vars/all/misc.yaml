@@ -1,0 +1,3 @@
+env: "cert"
+debug: "true"
+cname: "{{ env }}.{{ base_cname }}"

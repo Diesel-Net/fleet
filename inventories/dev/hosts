@@ -1,0 +1,11 @@
+[leader]
+# dev.occ.starbucks.net
+ub60604.starbucks.net
+
+# Slack Bot host
+ub60525.starbucks.net
+
+[backup]
+# dev.logs.occ.starbucks.net
+# dev.backups.occ.starbucks.net
+ub52672.starbucks.net

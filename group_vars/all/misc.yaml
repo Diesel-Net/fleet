@@ -1,0 +1,5 @@
+user: automation
+home: "/home/{{ user }}"
+app_data: "{{ home }}/.occ"
+
+base_cname: "occ.starbucks.net"

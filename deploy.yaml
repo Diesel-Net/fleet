@@ -1,0 +1,9 @@
+# ansible-playbook deploy.yaml -i inventories/dev/hosts --vault-id ~/.tokens/vault.txt
+
+- import_playbook: rebuild_certificates.yaml
+
+- hosts: all
+  strategy: free
+  roles:
+    - ubuntu_base
+    - docker_host

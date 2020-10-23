@@ -1,4 +1,4 @@
-# ansible-playbook configure_automation_user.yaml -i inventories/dev/hosts --vault-id ~/.tokens/vault.txt --limit 'localhost, test_server'
+# ansible-playbook configure_automation_user.yaml -i inventories/dev/hosts --vault-id ~/.tokens/master_id --limit 'localhost, test_server'
 
 - import_playbook: ssh_keyscan.yaml
 
@@ -8,12 +8,15 @@
   vars_prompt:
 
     - name: ansible_user
-      prompt: "What is your username?"
+      prompt: "Admin Username"
       private: no 
 
     - name: ansible_ssh_pass
-      prompt: "What is your password?"
+      prompt: "Admin Password"
       private: yes
+
+  vars:
+    ansible_sudo_pass: "{{ ansible_ssh_pass }}"
 
   tasks:
 
@@ -59,13 +62,6 @@
       user:
         name: automation
         shell: /bin/bash
-      become: yes
-
-    - name: "Ensure automation user has access to cron"
-      lineinfile:
-        path: /etc/cron.allow
-        line: automation
-        state: present
       become: yes
 
     - name: "Create directory for configuration files"

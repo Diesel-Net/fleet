@@ -1,5 +1,5 @@
 ssh_user: automation
-ssh_public_key: 
+ssh_public_key:
   "ssh-rsa \
   AAAAB3NzaC1yc2EAAAADAQABAAACAQDdiNmq8+W1\
   r7btB7FgdbEo7V9UaBE48xpT0CnPFCPy6+BAHXgp\
@@ -19,5 +19,5 @@ ssh_public_key:
   t6+31z5X9fbHyfz4IE+6snilcQMMCwDCJGRcRt1A\
   jvs11W888khf/SDRuH4EqBUVAxa0oAtVbSYo/3Mt\
   7OAtgBLBp1wEY86ZCQwpotGCih601Z563Q== \
-  automation@M1
+  automation@M1"
 

@@ -1,0 +1,23 @@
+ssh_user: automation
+ssh_public_key: 
+  "ssh-rsa \
+  AAAAB3NzaC1yc2EAAAADAQABAAACAQDdiNmq8+W1\
+  r7btB7FgdbEo7V9UaBE48xpT0CnPFCPy6+BAHXgp\
+  /SkBi4yb76lh25+lIbzsofHWRBMOYu0q4CHF++2H\
+  YyT4t7Jhl0oxcj7QzPMR1NQ4FX7ZfNS5AHBpXTAw\
+  zPN9CKFqn7LTDkxOgo6Q9THw2/M1FCO8hTKtwXK3\
+  jyAkd9rpMOpgg7eGrjcQFJTRrITQsVV78x4BW+4d\
+  kN5K03CijTNyoyQ2rnTfjS31WChL7qJ0MVhyOKWQ\
+  WpU4OT1jxMfDA6/i58WA9Op9oJvSRjsu/NowK/IH\
+  wgPa4F7ti+zWH5NM4mGIf2Dty72oJPtPQzruQE0j\
+  6D3JBY+bzq0F6CW/LkF87F6+2/VIn3k7XBOsdjAS\
+  4OWAZSUEjb5WoM4LkKJo/msJBBdKLuGy5e9hy+zq\
+  wVxmQ+fyqA6yQi/tkLjvyj32m7+ck06EC6yApPgD\
+  2QaAlUAVPLRTOGCnqcIUBCjU2pocu6Q1neiSdg15\
+  +G/R8QqlFmvIh77B8hOJl0W9esgYO0MCId/iCFgk\
+  hf/Ic4Pvlhf1j3o8ps8vaMNeFGc8b7tNiFe3iI+K\
+  t6+31z5X9fbHyfz4IE+6snilcQMMCwDCJGRcRt1A\
+  jvs11W888khf/SDRuH4EqBUVAxa0oAtVbSYo/3Mt\
+  7OAtgBLBp1wEY86ZCQwpotGCih601Z563Q== \
+  automation@M1
+

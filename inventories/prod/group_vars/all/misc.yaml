@@ -1,4 +1,0 @@
-# should be used as our docker stack name
-env: "prod"
-debug: "false"
-cname: "{{ base_cname }}"

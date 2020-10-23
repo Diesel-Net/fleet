@@ -5,30 +5,14 @@
 - hosts: all
   strategy: free
   
-  vars:
-    ssh_user: automation
-    ssh_public_key: 
-      "ssh-rsa \
-      AAAAB3NzaC1yc2EAAAADAQABAAABAQDUei9OBBs3\
-      +JmfdsONAKC+Eqt6ILWmUH09vKwwtxBrWSsGo45K\
-      uH3YO+Rpmg88KNhiMJw8kRicz2ZsTvtvmg+lipdU\
-      LZBiUBtNa119xWYaRDFckG6d/7p7B0WXbE8I7/vX\
-      tFvfyhzFTHW7eqmtrlZkWt2DBaZLcufRa0AJMpuC\
-      QDwU6XVVdsGyggftff56L1YSH2etKXtPtjxOicpk\
-      Iq+w8ebA/FYOQqKcQhqsSBigYV5ydfXO73fbG0UO\
-      2WwJskBmbF0peudL41cHN5aenbwlJdzb5bU/ajbf\
-      wC7DIEVQMcyYEqpNlqCupsVWeUBIH2xz4jDPGwZc\
-      k7F8p6bQC9Bn \
-      automation@ub50194"
-  
   vars_prompt:
 
     - name: ansible_user
-      prompt: "What is your m-account username?"
+      prompt: "What is your username?"
       private: no 
 
     - name: ansible_ssh_pass
-      prompt: "What is your m-account password?"
+      prompt: "What is your password?"
       private: yes
 
   tasks:

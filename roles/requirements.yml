@@ -1,14 +1,14 @@
-- name: ssh_keyscan
-  scm: git
-  src: "https://scm.starbucks.com/OCC/ansible-role-ssh-keyscan.git"
-  version: "1.0.0"
+# - name: ssh_keyscan
+#   scm: git
+#   src: "https://github.com/tomdaley92/ansible-role-ssh-keyscan.git"
+#   version: "1.0.0"
 
 - name: ubuntu_base
   scm: git
-  src: "https://scm.starbucks.com/OCC/ansible-role-ubuntu-base.git"
-  version: "1.0.4"
+  src: "git@github.com:tomdaley92/ansible-role-ubuntu-base.git"
+  version: "stable"
 
-- name: docker_host
-  scm: git
-  src: "https://scm.starbucks.com/OCC/ansible-role-docker-host.git"
-  version: "1.1.0"
+# - name: docker_host
+#   scm: git
+#   src: "https://github.com/tomdaley92/ansible-role-docker-host.git"
+#   version: "1.1.0"

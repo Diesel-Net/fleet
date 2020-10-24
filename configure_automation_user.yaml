@@ -1,4 +1,4 @@
-# ansible-playbook configure_automation_user.yaml -i inventories/dev/hosts --vault-id ~/.tokens/master_id --limit 'localhost, test_server'
+# ansible-playbook configure_automation_user.yaml -i inventories/dev/hosts --vault-id ~/.tokens/master_id
 
 - import_playbook: ssh_keyscan.yaml
 

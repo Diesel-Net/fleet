@@ -4,12 +4,12 @@
 
 - hosts: all
   strategy: free
-  
+
   vars_prompt:
 
     - name: ansible_user
       prompt: "Admin Username"
-      private: no 
+      private: no
 
     - name: ansible_ssh_pass
       prompt: "Admin Password"
@@ -20,11 +20,11 @@
 
   tasks:
 
-    - name: "Add and configure `{{ ssh_user }}` user"
+    - name: "Add and configure `{{ automation_user }}` user"
       user:
-        name: "{{ ssh_user }}"
+        name: "{{ automation_user }}"
         append: yes
-        groups: 
+        groups:
           - sudo
         create_home: yes
         expires: -1
@@ -38,11 +38,11 @@
         shell: /bin/bash
       become: yes
 
-    - name: "Add `{{ ssh_user }}` public ssh key to authorized_keys"
+    - name: "Add `{{ automation_user }}` public ssh key to authorized_keys"
       authorized_key:
-        user: "{{ ssh_user }}"
+        user: "{{ automation_user }}"
         state: present
-        key: "{{ ssh_public_key }}"
+        key: "{{ automation_user_ssh_public_key }}"
       become: yes
 
     - name: "Remove password expiry for automation user"
@@ -50,7 +50,7 @@
       become: yes
 
     - name: "Copy the `automation` sudoers configuration file over"
-      copy: 
+      copy:
         src: automation
         dest: /etc/sudoers.d/automation
         mode: 0440

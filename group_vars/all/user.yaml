@@ -1,5 +1,5 @@
-ssh_user: automation
-ssh_public_key:
+automation_user: automation
+automation_user_ssh_public_key:
   "ssh-rsa \
   AAAAB3NzaC1yc2EAAAADAQABAAACAQCxkbxSrrQmVVyszfQxGzz\
   R9XNRytfWQ41cdVFjd5mpdr8te5brjIKrN4/iyY3j5YZoHaXxLD\

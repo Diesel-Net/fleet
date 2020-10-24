@@ -3,6 +3,11 @@
   src: "git@github.com:tomdaley92/ansible-role-ssh-keyscan.git"
   version: "development"
 
+- name: automation_user
+  scm: git
+  src: "git@github.com:tomdaley92/ansible-role-automation-user.git"
+  version: "development"
+
 - name: ubuntu_base
   scm: git
   src: "git@github.com:tomdaley92/ansible-role-ubuntu-base.git"

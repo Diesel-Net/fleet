@@ -1,0 +1,6 @@
+# ansible-playbook configure_ssh.yaml -i inventories/dev/hosts --vault-id ~/.tokens/master_id
+
+- hosts: all
+  strategy: free
+  roles:
+    - automation_user

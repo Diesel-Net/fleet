@@ -1,7 +1,0 @@
-# ansible-playbook ssh_keyscan.yaml -i inventories/dev/hosts --vault-id ~/.tokens/master_id
-
-- hosts: localhost
-  connection: local
-  strategy: linear
-  roles:
-    - ssh_keyscan

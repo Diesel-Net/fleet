@@ -1,7 +1,5 @@
 # ansible-playbook deploy.yaml -i inventories/dev/hosts --vault-id ~/.tokens/master_id
 
-- import_playbook: ssh_keyscan.yaml
-
 - hosts: all
   strategy: free
   roles:

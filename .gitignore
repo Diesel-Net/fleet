@@ -1,0 +1,4 @@
+roles/ssh_keyscan
+roles/ubuntu_base
+roles/docker_host
+roles/automation_user

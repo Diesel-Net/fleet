@@ -1,0 +1,22 @@
+# ansible-playbook configure_automation_user.yaml -i inventories/dev/hosts --vault-id ~/.tokens/master_id
+
+- hosts: localhost
+  roles:
+    - ssh_keyscan
+
+- hosts: all
+  strategy: free
+  vars_prompt:
+
+    - name: ansible_user
+      prompt: "Superuser Username"
+      private: no
+
+    - name: ansible_ssh_pass
+      prompt: "Superuser Password"
+      private: yes
+  vars:
+    ansible_sudo_pass: "{{ ansible_ssh_pass }}"
+
+  roles:
+    - automation_user

@@ -1,0 +1,7 @@
+user: automation
+home: "/home/{{ user }}"
+app_data: "{{ home }}/.diesel"
+
+hostname: "{{ env }}-leader"
+domain: diesel.net
+fqdn: "{{ hostname }}.{{ doname }}"

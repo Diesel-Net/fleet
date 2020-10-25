@@ -1,0 +1,4 @@
+# Created by scm.starbucks.net/OCC/base-ansible to remove password requirement for sudo for the automation user
+
+# User rules for automation
+automation ALL=(ALL) NOPASSWD:ALL

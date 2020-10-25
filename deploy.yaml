@@ -1,0 +1,7 @@
+# ansible-playbook deploy.yaml -i inventories/dev/hosts --vault-id ~/.tokens/master_id
+
+- hosts: all
+  strategy: free
+  roles:
+    - ubuntu_base
+    - docker_host

@@ -9,11 +9,11 @@
   vars_prompt:
 
     - name: ansible_user
-      prompt: "Administrator Username"
+      prompt: "Superuser Username"
       private: no
 
     - name: ansible_ssh_pass
-      prompt: "Administrator Password"
+      prompt: "Superuser Password"
       private: yes
   vars:
     ansible_sudo_pass: "{{ ansible_ssh_pass }}"

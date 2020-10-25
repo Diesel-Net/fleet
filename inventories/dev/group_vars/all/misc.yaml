@@ -1,6 +1,2 @@
 env: "dev"
 debug: "true"
-hostname: "{{ env }}-leader"
-domain_name: diesel.net
-fqdn: "{{ hostname }}.{{ domain_name }}"
-

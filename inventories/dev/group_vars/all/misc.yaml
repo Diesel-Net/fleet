@@ -1,3 +1,6 @@
 env: "dev"
 debug: "true"
-cname: "{{ env }}.{{ base_cname }}"
+hostname: "{{ env }}-leader"
+domain_name: diesel.net
+fqdn: "{{ hostname }}.{{ domain_name }}"
+

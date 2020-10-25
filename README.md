@@ -15,6 +15,12 @@ ansible-galaxy install -r roles/requirements.yaml -p ./roles --force
 ```
 
 ## Updating the Stack
+This first playbook only needs to be ran once, when connecting to host for the first time. The second one will update the stack.
+
+```bash
+ansible-playbook configure_ssh.yaml -i inventories/dev/hosts --vault-id ~/.tokens/vault.txt
+```
+
 ```bash
 ansible-playbook deploy.yaml -i inventories/dev/hosts --vault-id ~/.tokens/vault.txt
 ```

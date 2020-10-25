@@ -1,19 +1,19 @@
 - name: ssh_keyscan
   scm: git
   src: "git@github.com:tomdaley92/ansible-role-ssh-keyscan.git"
-  version: "development"
+  version: "1.0.0"
 
 - name: automation_user
   scm: git
   src: "git@github.com:tomdaley92/ansible-role-automation-user.git"
-  version: "development"
+  version: "1.0.0"
 
 - name: ubuntu_base
   scm: git
   src: "git@github.com:tomdaley92/ansible-role-ubuntu-base.git"
-  version: "development"
+  version: "1.0.0"
 
 - name: docker_host
   scm: git
   src: "git@github.com:tomdaley92/ansible-role-docker-host.git"
-  version: "development"
+  version: "1.0.0"

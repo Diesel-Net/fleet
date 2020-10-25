@@ -1,5 +1,5 @@
-# base-ansible
-Code to run on freshly checked out VM's in our cluster. This is the first ansible-playbook that should be executed on an Ubuntu VM checked out from Verde.
+# Ubuntu-Server
+Code to run on freshly checked out Ubuntu 18.04 Virtual Machine.
 
 ## Requirements
 - Ansible 2.8.1+

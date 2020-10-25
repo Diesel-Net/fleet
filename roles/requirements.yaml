@@ -10,7 +10,7 @@
 
 - name: ubuntu_base
   scm: git
-  src: "git@github.com:tomdaley92/ansible-role-ubuntu-base.git"
+  src: "git@github.com:tomdaley92/ansible-role-ubuntu.git"
   version: "1.0.0"
 
 - name: docker_host

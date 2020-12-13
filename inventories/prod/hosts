@@ -1,3 +1,5 @@
-[leader]
+[tools]
 tools.diesel.net
+
+[hooks]
 hooks.diesel.net

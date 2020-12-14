@@ -2,6 +2,6 @@ user: automation
 home: "/home/{{ user }}"
 app_data: "{{ home }}/.diesel"
 
-hostname: "{{ env }}-leader"
+hostname: "{{ env }}"
 domain: diesel.net
-fqdn: "{{ hostname }}.{{ doname }}"
+fqdn: "{{ hostname }}.{{ domain }}"

@@ -1,5 +1,5 @@
-# Ubuntu-Server
-Code to run on freshly checked out Ubuntu 18.04 Virtual Machine.
+# Ubuntu
+Code to run on fresh Ubuntu 18.04 Servers.
 
 ## Requirements
 - Ansible 2.8.1+

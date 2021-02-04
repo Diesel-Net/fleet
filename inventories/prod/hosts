@@ -1,14 +1,20 @@
 all:
   children:
+
     leader:
       hosts:
-        prod.diesel.net
+        diesel.net:
+          dhcp4: false
+          gateway4: 192.168.50.1
+          nameservers:
+            - 192.168.50.25
+            - 192.168.50.1
+          ip_addresses:
+            - 192.168.50.20/24
     tools:
       hosts:
-        tools.diesel.net
-    drone:
-      hosts:
-        drone.diesel.net
+        tools.diesel.net:
+
   vars:
     ansible_user: automation
     ansible_python_interpreter: /usr/bin/python3

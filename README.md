@@ -19,7 +19,8 @@ This first playbook only needs to be ran once, when connecting to host for the f
 ansible-playbook configure_ssh.yaml -i inventories/dev/hosts --vault-id ~/.tokens/master_id
 ```
 
-## Provision VMs
+## Configure Swarm
+Right now each environment is defined as an independent Virtual Machine (single-node swarm leaders)
 ```bash
 ansible-playbook deploy.yaml -i inventories/dev/hosts --vault-id ~/.tokens/master_id
 ```

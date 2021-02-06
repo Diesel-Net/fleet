@@ -6,15 +6,10 @@
 
 - hosts: all
   strategy: free
-  vars_prompt:
+  vars:
+    ansible_user: "{{ lookup('env',SUPER_USER') }}"
+    ansible_ssh_pass: "{{ lookup('env','SUPER_PASS') }}"
 
-    - name: ansible_user
-      prompt: "Superuser Username"
-      private: no
-
-    - name: ansible_ssh_pass
-      prompt: "Superuser Password"
-      private: yes
   vars:
     ansible_sudo_pass: "{{ ansible_ssh_pass }}"
 

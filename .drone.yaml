@@ -1,0 +1,118 @@
+---
+kind: pipeline
+type: docker
+name: Update Development
+
+clone:
+  depth: 1
+
+steps:
+  - name: configure ssh
+    image: plugins/ansible:3
+    settings:
+      galaxy: /drone/src/roles/requirements.yaml
+      playbook: configure_ssh.yaml
+      inventory: inventories/dev/hosts
+      vault_password:
+        from_secret: ansible_vault_password
+    environment:
+      SUPER_USER:
+        from_secret: super_user
+      SUPER_PASS:
+        from_secret: super_pass
+
+  - name: deploy
+    image: plugins/ansible:3
+    settings:
+      galaxy: /drone/src/roles/requirements.yaml
+      playbook: deploy.yaml
+      inventory: inventories/dev/hosts
+      private_key:
+        from_secret: ansible_private_key
+      vault_password:
+        from_secret: ansible_vault_password
+
+trigger:
+  branch:
+    - development
+  event:
+    - push
+
+---
+kind: pipeline
+type: docker
+name: Update Certification
+
+clone:
+  depth: 1
+
+steps:
+  - name: configure ssh
+    image: plugins/ansible:3
+    settings:
+      galaxy: /drone/src/roles/requirements.yaml
+      playbook: configure_ssh.yaml
+      inventory: inventories/cert/hosts
+      vault_password:
+        from_secret: ansible_vault_password
+    environment:
+      SUPER_USER:
+        from_secret: super_user
+      SUPER_PASS:
+        from_secret: super_pass
+
+  - name: deploy
+    image: plugins/ansible:3
+    settings:
+      galaxy: /drone/src/roles/requirements.yaml
+      playbook: deploy.yaml
+      inventory: inventories/cert/hosts
+      private_key:
+        from_secret: ansible_private_key
+      vault_password:
+        from_secret: ansible_vault_password
+
+trigger:
+  branch:
+    - stable
+  event:
+    - push
+
+---
+kind: pipeline
+type: docker
+name: Update Production
+
+clone:
+  depth: 1
+
+steps:
+  - name: configure ssh
+    image: plugins/ansible:3
+    settings:
+      galaxy: /drone/src/roles/requirements.yaml
+      playbook: configure_ssh.yaml
+      inventory: inventories/prod/hosts
+      vault_password:
+        from_secret: ansible_vault_password
+    environment:
+      SUPER_USER:
+        from_secret: super_user
+      SUPER_PASS:
+        from_secret: super_pass
+
+  - name: deploy
+    image: plugins/ansible:3
+    settings:
+      galaxy: /drone/src/roles/requirements.yaml
+      playbook: deploy.yaml
+      inventory: inventories/prod/hosts
+      private_key:
+        from_secret: ansible_private_key
+      vault_password:
+        from_secret: ansible_vault_password
+
+trigger:
+  event:
+    - tag
+...

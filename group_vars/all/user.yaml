@@ -1,18 +1,13 @@
 automation_user: automation
-automation_user_ssh_public_key:
+automation_user_ssh_public_key: 
   "ssh-rsa \
-  AAAAB3NzaC1yc2EAAAADAQABAAACAQCxkbxSrrQmVVyszfQxGzz\
-  R9XNRytfWQ41cdVFjd5mpdr8te5brjIKrN4/iyY3j5YZoHaXxLD\
-  V1da1OgwpQWvx3JX89bhZ5Y2QJaEto1iQOwf15b0QeVZyEcZPkM\
-  X+lcBUMsr3axBgicLbOeN8sCmDx6oktofwQTbyxgTrAv+Fe49Ft\
-  cnWWF9E1ZFZvBxl3+3OuXEEWzObl1ADKyXrHCvrcocboOr/Rx+I\
-  OBSB9WljeQ8FC7/e/WzsUvsFVl0uZbHV7aEJGUbZCjefYK4A0jq\
-  KKqdwlk5PVC7Dmjhw9P2ImQmEHGGkta3ME3DLqM2c8T91XT+ZAj\
-  jg+1+FT5oewjAIM3ayEN/1RZwSKNfs+VBysIhDkp9Xs5NDpSXyG\
-  YwwqDI/w9rhf1GHJMSSYMFNccsIl/eexF+nMiwntJWbhxMYBKwQ\
-  GGaUwWdXH4IyGeTtfAqNupI6rbix24fPiGUMmdxg1YyGSUjWFNz\
-  LC15LASbWW1yVh1XrZ61dEKPUzz+TGgb+WqlF4nrBMV6Lb2PnIt\
-  kNs6rftLKkigMMY9WwjDIGkvsEX4E+p5rFcGaseFPk5RR59hHkB\
-  2SBY/tRCjTeZZHkIQgop8UmDlswBQnYi88FuedEXH2Eh7reZJPJ\
-  jK64luNPZihVuFqIg2f4IOlUgKX2SZ2fByelqf/Mok41BcP0PFQ\
-  == automation@kali"
+  AAAAB3NzaC1yc2EAAAADAQABAAACAQDqcgIeeDNXvweA32+8mOxtoy511/sl3Uf3L2I6UNDEYjKdH6a\
+  z8Acw7J/29rQwulwktAtrGBo/8hLRj15mv5JUspozHEKEWb6biSqKkcwPHfL6JqtviUlMWxS4qBPMz5\
+  rsWYwgbHoGgYrC/+uVj6fFBkzcoch2skC38hBbLgawMkKufr4X33akAtj3fha8hyRFFarpAmZCGD2kn\
+  2Mp0o1zUh/cZxpDBmAx8X7Uo4kqDayueYrIgTJ5qUuJM9lsPP1IlBJgNF3lJ7Tx0NUU4wXBIrnLTR4v\
+  oVokkxHywfi3Hx6M5xKKVC7COahI5MKT4eud/fa4yotxvz606RrOEED4BFONzq+GFqFXjdWE6rPXqcT\
+  OIvSl3Yt3N95wu3GZ7r7Y/NJWq9H0I0c4SwxfC++iJNY+0ukgiDTG7eRsTT/erQonjbPCTnctfjqISh\
+  D08upSVtkpwggqi2gAl2CW6+7o2WKc3K63rXdVUhn9naYUhUXzC6nPvy8EYSjwKyEwa0IfVBipi/mmC\
+  5Tdyw53eQQY9kbtgGQhKAmQjhboOcN+wIzKk+gY3P42vHa63K9Wf59fIy+C59TG6J21eScktdcbwd2x\
+  ++EvV+OEJl3n8CnU2PqrI/BK2cBQjcX56ofcAC38GYzIRKDgj9qdRk3GaEw8kuMntarJiCVIvTmdZB/\
+  mTQ== tom@M1"

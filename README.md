@@ -1,5 +1,8 @@
-# diesel-net
-Docker Swarm Mode on fleets of Ubuntu 18.04 Virtual Machines.
+[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/fleet/status.svg)](https://drone-ci.hopto.org/Diesel-Net/fleet)
+
+
+# fleet
+Docker Swarm Mode on Ubuntu 18.04 Virtual Machines.
 
 ## Requirements
 - Ansible 2.10+

@@ -1,8 +1,8 @@
-[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/fleet/status.svg)](https://drone-ci.hopto.org/Diesel-Net/fleet)
+[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/swarm/status.svg)](https://drone-ci.hopto.org/Diesel-Net/swarm)
 
 
-# fleet
-Docker Swarm Mode on Ubuntu 18.04 Virtual Machines.
+# swarm
+Docker [Swarm Mode](https://docs.docker.com/engine/swarm/) on Ubuntu Server LTS Virtual Machines.
 
 ## Requirements
 - Ansible 2.10+
@@ -19,7 +19,8 @@ This first playbook only needs to be ran once, when connecting to host for the f
 ansible-playbook configure_ssh.yaml -i inventories/dev/hosts --vault-id ~/.tokens/master_id
 ```
 
-## Provision VMs
+## Configure Swarm
+Right now each environment is defined as an independent Virtual Machine (single-node swarm leaders)
 ```bash
 ansible-playbook deploy.yaml -i inventories/dev/hosts --vault-id ~/.tokens/master_id
 ```

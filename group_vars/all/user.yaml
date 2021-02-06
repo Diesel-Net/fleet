@@ -1,6 +1,6 @@
 automation_user: automation
 automation_user_ssh_public_key: 
-  "ssh-rsa\
+  "ssh-rsa \
   AAAAB3NzaC1yc2EAAAADAQABAAACAQDqcgIeeDNXvweA32+8mOxtoy511/sl3Uf3L2I6UNDEYjKdH6a\
   z8Acw7J/29rQwulwktAtrGBo/8hLRj15mv5JUspozHEKEWb6biSqKkcwPHfL6JqtviUlMWxS4qBPMz5\
   rsWYwgbHoGgYrC/+uVj6fFBkzcoch2skC38hBbLgawMkKufr4X33akAtj3fha8hyRFFarpAmZCGD2kn\

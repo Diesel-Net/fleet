@@ -1,7 +1,7 @@
-[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/fleet/status.svg)](https://drone-ci.hopto.org/Diesel-Net/fleet)
+[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/swarm/status.svg)](https://drone-ci.hopto.org/Diesel-Net/swarm)
 
 
-# fleet
+# swarm
 Docker Swarm Mode on Ubuntu 18.04 Virtual Machines.
 
 ## Requirements

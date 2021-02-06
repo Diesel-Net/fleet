@@ -27,7 +27,6 @@ steps:
       galaxy: /drone/src/roles/requirements.yaml
       playbook: deploy.yaml
       inventory: inventories/dev/hosts
-      limit: leader:backup
       private_key:
         from_secret: ansible_private_key
       vault_password:
@@ -68,7 +67,6 @@ steps:
       galaxy: /drone/src/roles/requirements.yaml
       playbook: deploy.yaml
       inventory: inventories/cert/hosts
-      limit: leader:backup
       private_key:
         from_secret: ansible_private_key
       vault_password:
@@ -109,7 +107,6 @@ steps:
       galaxy: /drone/src/roles/requirements.yaml
       playbook: deploy.yaml
       inventory: inventories/prod/hosts
-      limit: leader:backup
       private_key:
         from_secret: ansible_private_key
       vault_password:

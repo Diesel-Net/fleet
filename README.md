@@ -1,5 +1,5 @@
-# diesel-net
-Docker Swarm Mode on fleets of Ubuntu 18.04 Virtual Machines.
+# fleet
+Docker Swarm Mode on Ubuntu 18.04 Virtual Machines.
 
 ## Requirements
 - Ansible 2.10+

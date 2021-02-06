@@ -1,0 +1,121 @@
+---
+kind: pipeline
+type: docker
+name: Update Development
+
+clone:
+  depth: 1
+
+steps:
+  - name: configure automation
+    image: plugins/ansible:3
+    settings:
+      galaxy: /drone/src/roles/requirements.yaml
+      playbook: configure_automation_user.yaml
+      inventory: inventories/dev/hosts
+      vault_password:
+        from_secret: ansible_vault_password
+    environment:
+      SUPER_USER:
+        from_secret: super_user
+      SUPER_PASS:
+        from_secret: super_pass
+
+  - name: deploy
+    image: plugins/ansible:3
+    settings:
+      galaxy: /drone/src/.ansible/roles/requirements.yaml
+      playbook: .ansible/deploy.yaml
+      inventory: .ansible/inventories/dev/hosts
+      limit: leader:backup
+      private_key:
+        from_secret: ansible_private_key
+      vault_password:
+        from_secret: ansible_vault_password
+
+trigger:
+  branch:
+    - development
+  event:
+    - push
+
+---
+kind: pipeline
+type: docker
+name: Update Certification
+
+clone:
+  depth: 1
+
+steps:
+  - name: configure automation
+    image: plugins/ansible:3
+    settings:
+      galaxy: /drone/src/roles/requirements.yaml
+      playbook: configure_automation_user.yaml
+      inventory: /inventories/cert/hosts
+      vault_password:
+        from_secret: ansible_vault_password
+    environment:
+      SUPER_USER:
+        from_secret: super_user
+      SUPER_PASS:
+        from_secret: super_pass
+
+  - name: deploy
+    image: plugins/ansible:3
+    settings:
+      galaxy: /drone/src/roles/requirements.yaml
+      playbook: /deploy.yaml
+      inventory: inventories/cert/hosts
+      limit: leader:backup
+      private_key:
+        from_secret: ansible_private_key
+      vault_password:
+        from_secret: ansible_vault_password
+
+trigger:
+  branch:
+    - stable
+  event:
+    - push
+
+---
+kind: pipeline
+type: docker
+name: Update Production
+
+clone:
+  depth: 1
+
+steps:
+  - name: configure automation
+    image: plugins/ansible:3
+    settings:
+      galaxy: /drone/src/roles/requirements.yaml
+      playbook: configure_automation_user.yaml
+      inventory: inventories/prod/hosts
+      vault_password:
+        from_secret: ansible_vault_password
+    environment:
+      SUPER_USER:
+        from_secret: super_user
+      SUPER_PASS:
+        from_secret: super_pass
+
+  - name: deploy
+    image: plugins/ansible:3
+    settings:
+      galaxy: /drone/src/roles/requirements.yaml
+      playbook: deploy.yaml
+      inventory: /inventories/prod/hosts
+      limit: leader:backup
+      private_key:
+        from_secret: ansible_private_key
+      vault_password:
+        from_secret: ansible_vault_password
+
+trigger:
+  event:
+    - tag
+...

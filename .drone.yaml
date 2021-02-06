@@ -7,11 +7,11 @@ clone:
   depth: 1
 
 steps:
-  - name: configure automation
+  - name: configure ssh
     image: plugins/ansible:3
     settings:
       galaxy: /drone/src/roles/requirements.yaml
-      playbook: configure_automation_user.yaml
+      playbook: configure_ssh.yaml
       inventory: inventories/dev/hosts
       vault_password:
         from_secret: ansible_vault_password
@@ -48,11 +48,11 @@ clone:
   depth: 1
 
 steps:
-  - name: configure automation
+  - name: configure ssh
     image: plugins/ansible:3
     settings:
       galaxy: /drone/src/roles/requirements.yaml
-      playbook: configure_automation_user.yaml
+      playbook: configure_ssh.yaml
       inventory: /inventories/cert/hosts
       vault_password:
         from_secret: ansible_vault_password
@@ -89,11 +89,11 @@ clone:
   depth: 1
 
 steps:
-  - name: configure automation
+  - name: configure ssh
     image: plugins/ansible:3
     settings:
       galaxy: /drone/src/roles/requirements.yaml
-      playbook: configure_automation_user.yaml
+      playbook: configure_ssh.yaml
       inventory: inventories/prod/hosts
       vault_password:
         from_secret: ansible_vault_password

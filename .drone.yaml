@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: docker
-name: Update Development
+name: development pipeline
 
 clone:
   depth: 1
@@ -41,7 +41,7 @@ trigger:
 ---
 kind: pipeline
 type: docker
-name: Update Certification
+name: certification pipeline
 
 clone:
   depth: 1
@@ -81,7 +81,7 @@ trigger:
 ---
 kind: pipeline
 type: docker
-name: Update Production
+name: production pipeline
 
 clone:
   depth: 1

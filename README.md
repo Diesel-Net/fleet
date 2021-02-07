@@ -2,7 +2,7 @@
 
 
 # swarm
-Docker [Swarm Mode](https://docs.docker.com/engine/swarm/) on Ubuntu Server LTS Virtual Machines.
+Leveraging Docker Engine's built-in [Swarm Mode](https://docs.docker.com/engine/swarm/) on Ubuntu Server LTS Virtual Machines.
 
 ## Requirements
 - Ansible 2.10+

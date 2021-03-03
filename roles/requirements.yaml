@@ -1,7 +1,7 @@
 - name: automation_user
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-automation-user.git"
-  version: "1.0.1"
+  version: "1.1.0"
 
 - name: ubuntu_base
   scm: git

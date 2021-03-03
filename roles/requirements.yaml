@@ -1,14 +1,14 @@
 - name: automation_user
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-automation-user.git"
-  version: "stable"
+  version: "1.0.1"
 
 - name: ubuntu_base
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-ubuntu-base.git"
-  version: "stable"
+  version: "1.0.0"
 
 - name: docker_host
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-docker-host.git"
-  version: "stable"
+  version: "1.0.0"

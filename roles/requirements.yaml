@@ -6,9 +6,9 @@
 - name: ubuntu_base
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-ubuntu-base.git"
-  version: "1.0.0"
+  version: "1.1.0"
 
 - name: docker_host
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-docker-host.git"
-  version: "1.0.0"
+  version: "1.0.1"

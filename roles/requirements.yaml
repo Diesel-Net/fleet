@@ -1,7 +1,7 @@
 - name: ssh_user
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-ssh-user.git"
-  version: "1.1.0"
+  version: "1.1.1"
 
 - name: ubuntu_base
   scm: git

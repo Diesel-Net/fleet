@@ -8,4 +8,4 @@
     ansible_sudo_pass: "{{ ansible_ssh_pass }}"
 
   roles:
-    - automation_user
+    - ssh_user

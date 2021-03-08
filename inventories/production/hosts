@@ -22,9 +22,9 @@ all:
           ip_addresses:
             - 192.168.50.21/24
 
-    game:
+    games:
       hosts:
-        game.diesel.net:
+        games.diesel.net:
           dhcp4: no
           gateway4: 192.168.50.1
           nameservers:

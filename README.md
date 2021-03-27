@@ -1,7 +1,7 @@
-[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/swarm/status.svg)](https://drone-ci.hopto.org/Diesel-Net/swarm)
+[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/swarm-bootstrapper/status.svg)](https://drone-ci.hopto.org/Diesel-Net/swarm-bootstrapper)
 
 
-# swarm
+# swarm-bootstrapper
 Leveraging Docker Engine's built-in [Swarm Mode](https://docs.docker.com/engine/swarm/) on Ubuntu Server LTS Virtual Machines.
 
 ## Requirements

@@ -12,7 +12,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      galaxy: .ansible/requirements.yaml
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/configure_ssh.yaml
       inventory: .ansible/inventory/development/hosts
       vault_password:
@@ -28,7 +28,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      galaxy: .ansible/requirements.yaml
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/deploy.yaml
       inventory: .ansible/inventory/development/hosts
       private_key:
@@ -56,7 +56,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      galaxy: .ansible/requirements.yaml
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/configure_ssh.yaml
       inventory: .ansible/inventory/stable/hosts
       vault_password:
@@ -72,7 +72,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      galaxy: .ansible/requirements.yaml
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/deploy.yaml
       inventory: .ansible/inventory/stable/hosts
       private_key:
@@ -100,7 +100,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      galaxy: .ansible/requirements.yaml
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/configure_ssh.yaml
       inventory: .ansible/inventory/production/hosts
       vault_password:
@@ -116,7 +116,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      galaxy: .ansible/requirements.yaml
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/deploy.yaml
       inventory: .ansible/inventory/production/hosts
       private_key:

@@ -1,6 +1,9 @@
 # ansible-playbook .ansible/deploy.yaml -i .ansible/inventory/development/hosts --vault-id ~/.tokens/master_id
 
-- import_playbook: ssh_keyscan.yaml
 - import_playbook: configure_ssh.yaml
-- import_playbook: configure_ubuntu.yaml
-- import_playbook: configure_docker.yaml
+
+- hosts: all 
+  strategy: free
+  roles:
+    - ubuntu_base
+    - docker_host

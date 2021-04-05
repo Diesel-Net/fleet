@@ -7,7 +7,7 @@ clone:
   depth: 1
 
 steps:
-  - name: deploy
+  - name: configure ssh
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
@@ -15,6 +15,17 @@ steps:
         from_secret: super_user
       SUPER_PASS:
         from_secret: super_pass
+    settings:
+      galaxy: .ansible/roles/requirements.yaml
+      playbook: .ansible/configure_ssh.yaml
+      inventory: .ansible/inventory/development/hosts
+      vault_password:
+        from_secret: ansible_vault_password 
+
+  - name: deploy
+    image: plugins/ansible:3
+    environment:
+      ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/deploy.yaml
@@ -37,7 +48,7 @@ clone:
   depth: 1
 
 steps:
-  - name: deploy
+  - name: configure ssh
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
@@ -47,10 +58,22 @@ steps:
         from_secret: super_pass
     settings:
       galaxy: .ansible/roles/requirements.yaml
+      playbook: .ansible/configure_ssh.yaml
+      inventory: .ansible/inventory/stable/hosts
+      vault_password:
+        from_secret: ansible_vault_password 
+
+  - name: deploy
+    image: plugins/ansible:3
+    environment:
+      ANSIBLE_CONFIG: .ansible/ansible.cfg
+    settings:
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/deploy.yaml
       inventory: .ansible/inventory/stable/hosts
       vault_password:
-        from_secret: ansible_vault_password
+        from_secret: ansible_vault_password 
+
 
 trigger:
   branch:
@@ -67,7 +90,7 @@ clone:
   depth: 1
 
 steps:
-  - name: deploy
+  - name: configure ssh
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
@@ -77,10 +100,22 @@ steps:
         from_secret: super_pass
     settings:
       galaxy: .ansible/roles/requirements.yaml
+      playbook: .ansible/configure_ssh.yaml
+      inventory: .ansible/inventory/production/hosts
+      vault_password:
+        from_secret: ansible_vault_password 
+
+  - name: deploy
+    image: plugins/ansible:3
+    environment:
+      ANSIBLE_CONFIG: .ansible/ansible.cfg
+    settings:
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/deploy.yaml
       inventory: .ansible/inventory/production/hosts
       vault_password:
-        from_secret: ansible_vault_password
+        from_secret: ansible_vault_password 
+
 
 trigger:
   event:

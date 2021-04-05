@@ -16,7 +16,7 @@ steps:
       SUPER_PASS:
         from_secret: super_pass
     settings:
-      galaxy: .ansible/roles/requirements.yaml
+      galaxy: .ansible/roles/requirements.ssh.yaml
       playbook: .ansible/configure_ssh.yaml
       inventory: .ansible/inventory/development/hosts
       vault_password:
@@ -27,7 +27,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      galaxy: .ansible/roles/requirements.yaml
+      galaxy: .ansible/roles/requirements.deploy.yaml
       playbook: .ansible/deploy.yaml
       inventory: .ansible/inventory/development/hosts
       vault_password:
@@ -57,7 +57,7 @@ steps:
       SUPER_PASS:
         from_secret: super_pass
     settings:
-      galaxy: .ansible/roles/requirements.yaml
+      galaxy: .ansible/roles/requirements.ssh.yaml
       playbook: .ansible/configure_ssh.yaml
       inventory: .ansible/inventory/stable/hosts
       vault_password:
@@ -68,7 +68,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      galaxy: .ansible/roles/requirements.yaml
+      galaxy: .ansible/roles/requirements.deploy.yaml
       playbook: .ansible/deploy.yaml
       inventory: .ansible/inventory/stable/hosts
       vault_password:
@@ -99,7 +99,7 @@ steps:
       SUPER_PASS:
         from_secret: super_pass
     settings:
-      galaxy: .ansible/roles/requirements.yaml
+      galaxy: .ansible/roles/requirements.ssh.yaml
       playbook: .ansible/configure_ssh.yaml
       inventory: .ansible/inventory/production/hosts
       vault_password:
@@ -110,7 +110,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      galaxy: .ansible/roles/requirements.yaml
+      galaxy: .ansible/roles/requirements.deploy.yaml
       playbook: .ansible/deploy.yaml
       inventory: .ansible/inventory/production/hosts
       vault_password:

@@ -1,3 +1,8 @@
+- name: ssh_keyscan
+  scm: git
+  src: "git@github.com:Diesel-Net/ansible-role-ssh-keyscan.git"
+  version: "1.0.0"
+
 - name: ssh_user
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-ssh-user.git"

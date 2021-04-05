@@ -1,7 +1,5 @@
 # ansible-playbook .ansible/deploy.yaml -i .ansible/inventory/development/hosts --vault-id ~/.tokens/master_id
 
-- import_playbook: configure_ssh.yaml
-
 - hosts: all 
   strategy: free
   roles:

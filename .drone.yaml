@@ -19,6 +19,8 @@ steps:
       galaxy: .ansible/roles/requirements.ssh.yaml
       playbook: .ansible/configure_ssh.yaml
       inventory: .ansible/inventory/development/hosts
+      private_key:
+        from_secret: ansible_private_key
       vault_password:
         from_secret: ansible_vault_password 
 
@@ -30,6 +32,8 @@ steps:
       galaxy: .ansible/roles/requirements.deploy.yaml
       playbook: .ansible/deploy.yaml
       inventory: .ansible/inventory/development/hosts
+      private_key:
+        from_secret: ansible_private_key
       vault_password:
         from_secret: ansible_vault_password 
 

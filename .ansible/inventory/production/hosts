@@ -3,7 +3,7 @@ all:
 
     leader:
       hosts:
-        diesel.net:
+        prod.diesel.net:
           dhcp4: no
           gateway4: 192.168.50.1
           nameservers:

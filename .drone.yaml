@@ -18,11 +18,16 @@ steps:
     settings:
       galaxy: .ansible/roles/requirements.ssh.yaml
       playbook: .ansible/configure_ssh.yaml
-      inventory: .ansible/inventory/development/hosts
       private_key:
         from_secret: ansible_private_key
       vault_password:
-        from_secret: ansible_vault_password 
+        from_secret: ansible_vault_password
+    commands:
+      # dynamically select inventory based on Git branch/tag
+      - version=$DRONE_BRANCH
+      - if [ ! -z $DRONE_TAG ]; then version=production; fi
+      - /bin/drone-ansible --inventory .ansible/inventories/$$version/hosts
+
 
   - name: deploy
     image: plugins/ansible:3
@@ -31,105 +36,22 @@ steps:
     settings:
       galaxy: .ansible/roles/requirements.deploy.yaml
       playbook: .ansible/deploy.yaml
-      inventory: .ansible/inventory/development/hosts
       private_key:
         from_secret: ansible_private_key
       vault_password:
         from_secret: ansible_vault_password 
+    commands:
+      # dynamically select inventory based on Git branch/tag
+      - version=$DRONE_BRANCH
+      - if [ ! -z $DRONE_TAG ]; then version=production; fi
+      - /bin/drone-ansible --inventory .ansible/inventories/$$version/hosts
 
 trigger:
   branch:
     - development
-  event:
-    - push
-
----
-kind: pipeline
-type: docker
-name: test pipeline
-
-clone:
-  depth: 1
-
-steps:
-  - name: configure ssh
-    image: plugins/ansible:3
-    environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
-      SUPER_USER:
-        from_secret: super_user
-      SUPER_PASS:
-        from_secret: super_pass
-    settings:
-      galaxy: .ansible/roles/requirements.ssh.yaml
-      playbook: .ansible/configure_ssh.yaml
-      inventory: .ansible/inventory/stable/hosts
-      private_key:
-        from_secret: ansible_private_key
-      vault_password:
-        from_secret: ansible_vault_password 
-
-  - name: deploy
-    image: plugins/ansible:3
-    environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
-    settings:
-      galaxy: .ansible/roles/requirements.deploy.yaml
-      playbook: .ansible/deploy.yaml
-      inventory: .ansible/inventory/stable/hosts
-      private_key:
-        from_secret: ansible_private_key
-      vault_password:
-        from_secret: ansible_vault_password 
-
-
-trigger:
-  branch:
     - stable
   event:
     - push
-
----
-kind: pipeline
-type: docker
-name: production pipeline
-
-clone:
-  depth: 1
-
-steps:
-  - name: configure ssh
-    image: plugins/ansible:3
-    environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
-      SUPER_USER:
-        from_secret: super_user
-      SUPER_PASS:
-        from_secret: super_pass
-    settings:
-      galaxy: .ansible/roles/requirements.ssh.yaml
-      playbook: .ansible/configure_ssh.yaml
-      inventory: .ansible/inventory/production/hosts
-      private_key:
-        from_secret: ansible_private_key
-      vault_password:
-        from_secret: ansible_vault_password 
-
-  - name: deploy
-    image: plugins/ansible:3
-    environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
-    settings:
-      galaxy: .ansible/roles/requirements.deploy.yaml
-      playbook: .ansible/deploy.yaml
-      inventory: .ansible/inventory/production/hosts
-      private_key:
-        from_secret: ansible_private_key
-      vault_password:
-        from_secret: ansible_vault_password 
-
-
-trigger:
-  event:
     - tag
+
 ...

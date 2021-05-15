@@ -1,0 +1,11 @@
+# ansible-playbook .ansible/update.yaml -i .ansible/inventory/development/hosts --vault-id ~/.tokens/master_id
+
+- hosts: all 
+  strategy: free
+  tasks:
+
+    - name: sudo apt update && sudo apt upgrade -y
+      apt:
+        update-cache: yes
+        upgrade: safe
+      become: yes

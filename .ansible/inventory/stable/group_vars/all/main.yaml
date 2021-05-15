@@ -1,1 +1,2 @@
-env: "test"
+env: test
+auto_reboots: yes

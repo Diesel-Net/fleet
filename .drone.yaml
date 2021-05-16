@@ -26,7 +26,7 @@ steps:
       # dynamically select inventory based on Git branch/tag
       - version=$DRONE_BRANCH
       - if [ ! -z $DRONE_TAG ]; then version=production; fi
-      - /bin/drone-ansible --inventory .ansible/inventories/$$version/hosts
+      - /bin/drone-ansible --inventory .ansible/inventory/$$version/hosts
 
 
   - name: deploy
@@ -44,7 +44,7 @@ steps:
       # dynamically select inventory based on Git branch/tag
       - version=$DRONE_BRANCH
       - if [ ! -z $DRONE_TAG ]; then version=production; fi
-      - /bin/drone-ansible --inventory .ansible/inventories/$$version/hosts
+      - /bin/drone-ansible --inventory .ansible/inventory/$$version/hosts
 
 trigger:
   branch:

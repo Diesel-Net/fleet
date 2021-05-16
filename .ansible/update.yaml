@@ -1,0 +1,10 @@
+# ansible-galaxy install -r .ansible/roles/requirements.update.yaml -p .ansible/roles --force
+# ansible-playbook .ansible/update.yaml -i .ansible/inventory/development/hosts --vault-id ~/.tokens/master_id
+
+- hosts: all 
+  strategy: free
+  tasks:
+
+    - import_role:
+        name: ubuntu_base
+        tasks_from: update

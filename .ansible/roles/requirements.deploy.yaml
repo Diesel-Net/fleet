@@ -6,4 +6,5 @@
 - name: docker_host
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-docker-host.git"
-  version: 1.0.1
+  #version: 1.0.1
+  version: development

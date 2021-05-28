@@ -4,4 +4,8 @@
   strategy: free
   roles:
     - ubuntu_base
-    - docker_host
+
+  tasks:
+    - include_role:
+        name: docker
+        tasks_from: install

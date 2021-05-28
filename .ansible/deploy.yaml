@@ -10,17 +10,21 @@
 
 - hosts: all
   strategy: free
-  roles:
-    - role: ubuntu
-      tasks_from: setup_user
+  # roles:
+  #   - role: ubuntu
+  #     tasks_from: setup_user
+  #     vars:
+  #       ansible_user: "{{ lookup('env', 'SUPER_USER') }}"
+  #       ansible_ssh_pass: "{{ lookup('env','SUPER_PASS') }}"
+  #       ansible_sudo_pass: "{{ ansible_ssh_pass }}"
+  tasks:
+    - include_role:
+        name: ubuntu
+        tasks_from: setup_user
       vars:
         ansible_user: "{{ lookup('env', 'SUPER_USER') }}"
         ansible_ssh_pass: "{{ lookup('env','SUPER_PASS') }}"
         ansible_sudo_pass: "{{ ansible_ssh_pass }}"
-  # tasks:
-  #   - import_role:
-  #       name: ubuntu
-  #       tasks_from: setup_user
       
 
 

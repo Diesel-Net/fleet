@@ -3,6 +3,11 @@
   src: "git@github.com:Diesel-Net/ansible-role-ubuntu-base.git"
   version: development
 
+- name: common
+  scm: git
+  src: "git@github.com:Diesel-Net/ansible-role-common.git"
+  version: development
+
 - name: docker
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-docker.git"

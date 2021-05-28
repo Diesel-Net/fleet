@@ -1,4 +1,4 @@
-[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/swarm-bootstrapper/status.svg)](https://drone-ci.hopto.org/Diesel-Net/swarm-bootstrapper)
+[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/swarm-bootstrap/status.svg)](https://drone-ci.hopto.org/Diesel-Net/swarm-bootstrap)
 
 # swarm-bootstrapper
 Leveraging Docker Engine's built-in [Swarm Mode](https://docs.docker.com/engine/swarm/) on Ubuntu Server LTS Virtual Machines. This is the first piece of code that should be executed against a fresh host on the `diesel.net` domain
@@ -9,13 +9,6 @@ Leveraging Docker Engine's built-in [Swarm Mode](https://docs.docker.com/engine/
 ## Installing Dependencies
 ```bash
 ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
-```
-
-## Configure SSH for _automation_ user
-This first playbook only needs to be ran once, when connecting to host for the first time. The second one will update the stack.
-
-```bash
-ansible-playbook .ansible/configure_ssh.yaml -i .ansible/inventory/dev/hosts --vault-id ~/.tokens/master_id
 ```
 
 ## Configure Swarm

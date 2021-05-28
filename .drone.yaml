@@ -7,28 +7,6 @@ clone:
   depth: 1
 
 steps:
-  - name: configure ssh
-    image: plugins/ansible:3
-    environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
-      SUPER_USER:
-        from_secret: super_user
-      SUPER_PASS:
-        from_secret: super_pass
-    settings:
-      galaxy: .ansible/roles/requirements.ssh.yaml
-      playbook: .ansible/configure_ssh.yaml
-      private_key:
-        from_secret: ansible_private_key
-      vault_password:
-        from_secret: ansible_vault_password
-    commands:
-      # dynamically select inventory based on Git branch/tag
-      - version=$DRONE_BRANCH
-      - if [ ! -z $DRONE_TAG ]; then version=production; fi
-      - /bin/drone-ansible --inventory .ansible/inventory/$$version/hosts
-
-
   - name: deploy
     image: plugins/ansible:3
     environment:

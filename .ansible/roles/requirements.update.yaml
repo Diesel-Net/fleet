@@ -1,4 +1,4 @@
-- name: ubuntu_base
+- name: ubuntu
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-ubuntu-base.git"
-  version: 1.4.0
+  version: development

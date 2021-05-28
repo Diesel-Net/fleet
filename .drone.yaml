@@ -7,10 +7,15 @@ clone:
   depth: 1
 
 steps:
+
   - name: deploy
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
+      SUPER_USER:
+        from_secret: super_user
+      SUPER_PASS:
+        from_secret: super_pass
     settings:
       galaxy: .ansible/roles/requirements.deploy.yaml
       playbook: .ansible/deploy.yaml

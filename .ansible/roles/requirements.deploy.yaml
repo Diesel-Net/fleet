@@ -5,7 +5,7 @@
 
 - name: common
   scm: git
-  src: "git@github.com:Diesel-Net/ansible-role-common.get"
+  src: "git@github.com:Diesel-Net/ansible-role-common.git"
   version: 1.0.0
 
 - name: docker

@@ -15,7 +15,7 @@
     ansible_ssh_pass: "{{ lookup('env','SUPER_PASS') }}"
     ansible_sudo_pass: "{{ ansible_ssh_pass }}"
   tasks:
-    - include_role:
+    - import_role:
         name: ubuntu
         tasks_from: setup_user
       

@@ -1,6 +1,6 @@
 [![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/swarm-bootstrap/status.svg)](https://drone-ci.hopto.org/Diesel-Net/swarm-bootstrap)
 
-# swarm-bootstrapper
+# swarm-bootstrap
 Leveraging Docker Engine's built-in [Swarm Mode](https://docs.docker.com/engine/swarm/) on Ubuntu Server LTS Virtual Machines. This is the first piece of code that should be executed against a fresh host on the `diesel.net` domain
 
 ## Requirements

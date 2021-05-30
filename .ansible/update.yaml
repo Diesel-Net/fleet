@@ -6,5 +6,5 @@
   tasks:
 
     - import_role:
-        name: ubuntu_base
+        name: ubuntu
         tasks_from: update

@@ -1,14 +1,10 @@
 all:
   children:
-    leader:
+    
+    manager:
       hosts:
         test.diesel.net:
-          dhcp4: no
-          gateway4: 192.168.50.1
-          nameservers:
-            - 192.168.50.1
-          ip_addresses:
-            - 192.168.50.19/24
+
   vars:
     ansible_user: automation
     ansible_python_interpreter: /usr/bin/python3

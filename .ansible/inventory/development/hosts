@@ -1,7 +1,7 @@
 all:
   children:
     
-    leader:
+    manager:
       hosts:
         dev.diesel.net:
   

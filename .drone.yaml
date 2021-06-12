@@ -17,6 +17,7 @@ steps:
       SUPER_PASS:
         from_secret: super_pass
     settings:
+      requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.deploy.yaml
       playbook: .ansible/deploy.yaml
       private_key:

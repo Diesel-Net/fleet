@@ -24,11 +24,11 @@
   strategy: free
   roles:
     - ubuntu
-  tasks:
-    - include_role:
-        name: docker
-        tasks_from: install
+  # tasks:
+  #   - include_role:
+  #       name: docker
+  #       tasks_from: install
 
-    - include_role:
-        name: docker
-        tasks_from: swarm_init
+  #   - include_role:
+  #       name: docker
+  #       tasks_from: swarm_init

@@ -1,4 +1,3 @@
-.ansible/roles/ssh_keyscan
-.ansible/roles/ubuntu_base
-.ansible/roles/docker_host
-.ansible/roles/ssh_user
+.ansible/roles/common
+.ansible/roles/ubuntu
+.ansible/roles/docker

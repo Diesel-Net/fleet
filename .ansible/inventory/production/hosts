@@ -17,6 +17,10 @@ all:
       hosts:
         games.diesel.net:
 
+    es:
+      hosts:
+        es.diesel.net:
+
   vars:
     ansible_user: automation
     ansible_python_interpreter: /usr/bin/python3

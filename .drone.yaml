@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: docker
-name: main deployment pipeline
+name: swarm bootstrap
 
 clone:
   depth: 1
@@ -32,7 +32,7 @@ steps:
 
 trigger:
   branch:
-    #- development
+    - development
     - stable
   event:
     - push
@@ -48,39 +48,39 @@ clone:
   depth: 1
 
 steps:
-  - name: Update development server(s)
+  - name: running maintenance tasks on development server(s)
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
       galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/update.yaml
+      playbook: .ansible/maintain.yaml
       inventory: .ansible/inventory/development
       private_key:
         from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password
 
-  - name: Update test server(s)
+  - name: running maintenance tasks on test server(s)s
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
       galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/update.yaml
+      playbook: .ansible/maintain.yaml
       inventory: .ansible/inventory/stable
       private_key:
         from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password
 
-  - name: Update production server(s)
+  - name: running maintenance tasks on production server(s)
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
       galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/update.yaml
+      playbook: .ansible/maintain.yaml
       inventory: .ansible/inventory/production
       private_key:
         from_secret: automation_id_rsa
@@ -115,6 +115,9 @@ steps:
         from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password
+
+depends_on: 
+  - swarm_bootstrap
 
 trigger:
   event:

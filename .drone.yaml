@@ -42,7 +42,7 @@ trigger:
 
 kind: pipeline
 type: docker
-name: daily updates pipeline
+name: daily maintenance
 
 clone:
   depth: 1

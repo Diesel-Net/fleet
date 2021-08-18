@@ -117,7 +117,7 @@ steps:
         from_secret: ansible_vault_password
 
 depends_on: 
-  - swarm_bootstrap
+  - swarm bootstrap
 
 trigger:
   event:

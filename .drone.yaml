@@ -92,36 +92,36 @@ trigger:
     - cron
   cron:
     - daily_maintenance
----
+# ---
 
-kind: pipeline
-type: docker
-name: daily maintenance (test)
+# kind: pipeline
+# type: docker
+# name: daily maintenance (test)
 
-clone:
-  depth: 1
+# clone:
+#   depth: 1
 
-steps:
+# steps:
 
-  - name: Running maintenance tasks on development server(s)
-    image: plugins/ansible:3
-    environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
-    settings:
-      galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/maintain.yaml
-      inventory: .ansible/inventory/development
-      private_key:
-        from_secret: automation_id_rsa
-      vault_password:
-        from_secret: ansible_vault_password
+#   - name: Running maintenance tasks on development server(s)
+#     image: plugins/ansible:3
+#     environment:
+#       ANSIBLE_CONFIG: .ansible/ansible.cfg
+#     settings:
+#       galaxy: .ansible/roles/requirements.yaml
+#       playbook: .ansible/maintain.yaml
+#       inventory: .ansible/inventory/development
+#       private_key:
+#         from_secret: automation_id_rsa
+#       vault_password:
+#         from_secret: ansible_vault_password
 
-depends_on: 
-  - swarm bootstrap
+# depends_on: 
+#   - swarm bootstrap
 
-trigger:
-  event:
-    - push
-  branch:
-    - development
+# trigger:
+#   event:
+#     - push
+#   branch:
+#     - development
 ...

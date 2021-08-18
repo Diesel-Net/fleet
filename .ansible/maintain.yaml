@@ -8,3 +8,7 @@
     - import_role:
         name: ubuntu
         tasks_from: update
+
+    - import_role:
+        name: docker
+        tasks_from: system_prune

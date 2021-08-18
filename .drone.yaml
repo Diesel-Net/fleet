@@ -18,7 +18,7 @@ steps:
         from_secret: super_pass
     settings:
       requirements: .ansible/files/requirements.txt
-      galaxy: .ansible/roles/requirements.deploy.yaml
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/deploy.yaml
       private_key:
         from_secret: automation_id_rsa
@@ -53,7 +53,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      galaxy: .ansible/roles/requirements.update.yaml
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/update.yaml
       inventory: .ansible/inventory/development
       private_key:
@@ -66,7 +66,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      galaxy: .ansible/roles/requirements.update.yaml
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/update.yaml
       inventory: .ansible/inventory/stable
       private_key:
@@ -79,7 +79,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      galaxy: .ansible/roles/requirements.update.yaml
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/update.yaml
       inventory: .ansible/inventory/production
       private_key:
@@ -91,5 +91,34 @@ trigger:
   event:
     - cron
   cron:
-    - daily_updates
+    - daily_maintenance
+---
+
+kind: pipeline
+type: docker
+name: daily maintenance (test)
+
+clone:
+  depth: 1
+
+steps:
+
+  - name: Running maintenance tasks on development server(s)
+      image: plugins/ansible:3
+      environment:
+        ANSIBLE_CONFIG: .ansible/ansible.cfg
+      settings:
+        galaxy: .ansible/roles/requirements.yaml
+        playbook: .ansible/maintain.yaml
+        inventory: .ansible/inventory/development
+        private_key:
+          from_secret: automation_id_rsa
+        vault_password:
+          from_secret: ansible_vault_password
+
+trigger:
+  event:
+    - cron
+  cron:
+    - test
 ...

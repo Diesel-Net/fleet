@@ -1,2 +1,2 @@
 env: prod
-auto_reboots: no
+auto_reboots: yes

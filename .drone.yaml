@@ -42,45 +42,45 @@ trigger:
 
 kind: pipeline
 type: docker
-name: daily updates pipeline
+name: daily maintenance
 
 clone:
   depth: 1
 
 steps:
-  - name: running maintenance tasks on development server(s)
+  - name: update dev
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
       galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/maintain.yaml
+      playbook: .ansible/update.yaml
       inventory: .ansible/inventory/development
       private_key:
         from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password
 
-  - name: running maintenance tasks on test server(s)s
+  - name: update test
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
       galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/maintain.yaml
+      playbook: .ansible/update.yaml
       inventory: .ansible/inventory/stable
       private_key:
         from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password
 
-  - name: running maintenance tasks on production server(s)
+  - name: update prod
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
       galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/maintain.yaml
+      playbook: .ansible/update.yaml
       inventory: .ansible/inventory/production
       private_key:
         from_secret: automation_id_rsa
@@ -92,36 +92,58 @@ trigger:
     - cron
   cron:
     - daily_maintenance
-# ---
 
-# kind: pipeline
-# type: docker
-# name: daily maintenance (test)
+---
 
-# clone:
-#   depth: 1
+kind: pipeline
+type: docker
+name: weekly maintenance
 
-# steps:
+clone:
+  depth: 1
 
-#   - name: Running maintenance tasks on development server(s)
-#     image: plugins/ansible:3
-#     environment:
-#       ANSIBLE_CONFIG: .ansible/ansible.cfg
-#     settings:
-#       galaxy: .ansible/roles/requirements.yaml
-#       playbook: .ansible/maintain.yaml
-#       inventory: .ansible/inventory/development
-#       private_key:
-#         from_secret: automation_id_rsa
-#       vault_password:
-#         from_secret: ansible_vault_password
+steps:
+  - name: update dev
+    image: plugins/ansible:3
+    environment:
+      ANSIBLE_CONFIG: .ansible/ansible.cfg
+    settings:
+      galaxy: .ansible/roles/requirements.yaml
+      playbook: .ansible/clean.yaml
+      inventory: .ansible/inventory/development
+      private_key:
+        from_secret: automation_id_rsa
+      vault_password:
+        from_secret: ansible_vault_password
 
-# depends_on: 
-#   - swarm bootstrap
+  - name: update test
+    image: plugins/ansible:3
+    environment:
+      ANSIBLE_CONFIG: .ansible/ansible.cfg
+    settings:
+      galaxy: .ansible/roles/requirements.yaml
+      playbook: .ansible/clean.yaml
+      inventory: .ansible/inventory/stable
+      private_key:
+        from_secret: automation_id_rsa
+      vault_password:
+        from_secret: ansible_vault_password
 
-# trigger:
-#   event:
-#     - push
-#   branch:
-#     - development
-...
+  - name: update prod
+    image: plugins/ansible:3
+    environment:
+      ANSIBLE_CONFIG: .ansible/ansible.cfg
+    settings:
+      galaxy: .ansible/roles/requirements.yaml
+      playbook: .ansible/clean.yaml
+      inventory: .ansible/inventory/production
+      private_key:
+        from_secret: automation_id_rsa
+      vault_password:
+        from_secret: ansible_vault_password
+
+trigger:
+  event:
+    - cron
+  cron:
+    - weekly_maintenance

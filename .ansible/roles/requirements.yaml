@@ -1,7 +1,7 @@
 - name: ubuntu
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-ubuntu.git"
-  version: 2.2.0
+  version: development
 
 - name: common
   scm: git

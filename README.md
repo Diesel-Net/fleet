@@ -14,5 +14,5 @@ ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --f
 ## Configure Swarm
 Right now each environment is defined as an independent Virtual Machine (single-node swarm leaders)
 ```bash
-ansible-playbook .ansible/deploy.yaml -i .ansible/inventory/dev/hosts --vault-id ~/.tokens/master_id
+ansible-playbook .ansible/deploy.yaml -i .ansible/inventory/development
 ```

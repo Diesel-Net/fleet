@@ -103,7 +103,7 @@ clone:
   depth: 1
 
 steps:
-  - name: update dev
+  - name: clean dev
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
@@ -116,7 +116,7 @@ steps:
       vault_password:
         from_secret: ansible_vault_password
 
-  - name: update test
+  - name: clean test
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
@@ -129,7 +129,7 @@ steps:
       vault_password:
         from_secret: ansible_vault_password
 
-  - name: update prod
+  - name: clean prod
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg

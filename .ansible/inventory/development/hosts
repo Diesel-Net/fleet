@@ -4,6 +4,10 @@ all:
     manager:
       hosts:
         dev.diesel.net:
+
+    gpu:
+      hosts:
+        gpu.diesel.net:
   
   vars:
     ansible_user: automation

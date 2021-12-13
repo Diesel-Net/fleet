@@ -22,6 +22,10 @@ all:
       hosts:
         es.diesel.net:
 
+    gpu:
+      hosts:
+        gpu.diesel.net:
+
   vars:
     ansible_user: automation
     ansible_python_interpreter: /usr/bin/python3

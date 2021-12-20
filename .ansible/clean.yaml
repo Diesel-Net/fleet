@@ -2,6 +2,8 @@
   strategy: free
   tasks:
 
-    - import_role:
+    - include_role:
         name: docker
         tasks_from: system_prune
+      vars:
+        options: --all

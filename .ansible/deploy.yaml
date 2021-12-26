@@ -30,3 +30,15 @@
     - include_role:
         name: docker
         tasks_from: swarm_init
+
+- hosts: nvidia
+  strategy: free
+  tasks:
+    - include_role:
+        name: ubuntu
+        tasks_from: install_nvidia_drivers
+
+    - include_role:
+        name: docker
+        tasks_from: install_nvidia_toolkit
+

@@ -22,7 +22,7 @@ all:
       hosts:
         es.diesel.net:
 
-    gpu:
+    nvidia:
       hosts:
         gpu.diesel.net:
 

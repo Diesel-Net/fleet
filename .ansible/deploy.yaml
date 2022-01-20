@@ -13,8 +13,8 @@
         name: ubuntu
         tasks_from: setup_user
   vars:
-    ansible_user: "{{ lookup('env', 'SUPER_USER') }}"
-    ansible_ssh_pass: "{{ lookup('env','SUPER_PASS') }}"
+    ansible_user: "{{ lookup('env', 'CLOUD_INIT_USER') }}"
+    ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASS') }}"
     ansible_sudo_pass: "{{ ansible_ssh_pass }}"   
 
 

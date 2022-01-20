@@ -12,10 +12,10 @@ steps:
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
-      SUPER_USER:
-        from_secret: super_user
-      SUPER_PASS:
-        from_secret: super_pass
+      CLOUD_INIT_USER:
+        from_secret: cloud_init_user
+      CLOUD_INIT_PASS:
+        from_secret: cloud_init_pass
     settings:
       requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
@@ -44,8 +44,6 @@ kind: pipeline
 type: docker
 name: daily maintenance
 
-clone:
-  depth: 1
 
 steps:
   - name: update dev
@@ -99,8 +97,6 @@ kind: pipeline
 type: docker
 name: weekly maintenance
 
-clone:
-  depth: 1
 
 steps:
   - name: clean dev

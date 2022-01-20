@@ -4,6 +4,8 @@ all:
     manager:
       hosts:
         dev.diesel.net:
+
+        automation-station.diesel.net:
   
   vars:
     ansible_user: automation

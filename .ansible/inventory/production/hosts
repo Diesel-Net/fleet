@@ -4,6 +4,7 @@ all:
     manager:
       hosts:
         prod.diesel.net:
+        automation-station.diesel.net:
 
     drone:
       hosts:

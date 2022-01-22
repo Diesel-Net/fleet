@@ -1,12 +1,15 @@
+- import_playbook: power_on.yaml
+
 - hosts: localhost
-  strategy: free
+  strategy: linear
   tasks:
+
     - include_role:
         name: ubuntu
         tasks_from: scan_hosts
 
 
-- hosts: all
+- hosts: manager:worker
   strategy: free
   tasks:
     - include_role:
@@ -18,7 +21,7 @@
     ansible_sudo_pass: "{{ ansible_ssh_pass }}"   
 
 
-- hosts: all 
+- hosts: manager:worker
   strategy: free
   roles:
     - ubuntu
@@ -42,3 +45,4 @@
         name: docker
         tasks_from: install_nvidia_toolkit
 
+- import_playbook: power_off.yaml

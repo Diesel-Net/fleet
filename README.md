@@ -27,7 +27,7 @@ You will need to have the ansible-vault password file configured on your machine
 
 `Bootstrap` the **development** fleet.
 ```bash
-ansible-playbook .ansible/deploy.yaml -i .ansible/inventory/development
+ansible-playbook .ansible/bootstrap.yaml -i .ansible/inventory/development
 ```
 
 `Clean` the **development** fleet.

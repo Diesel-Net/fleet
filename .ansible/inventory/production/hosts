@@ -1,31 +1,34 @@
 all:
   children:
 
+
     manager:
       hosts:
-        prod.diesel.net:
-        automation-station.diesel.net:
 
-    drone:
-      hosts:
+        prod.diesel.net:
+
         drone.diesel.net:
           auto_reboots: no
 
-    tools:
-      hosts:
         tools.diesel.net:
 
-    games:
-      hosts:
         games.diesel.net:
 
-    es:
-      hosts:
         es.diesel.net:
+
+        gpu.diesel.net:
+        
 
     nvidia:
       hosts:
+
         gpu.diesel.net:
+
+
+    offline:
+      hosts:
+
+        games.diesel.net
 
   vars:
     ansible_user: automation

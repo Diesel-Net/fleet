@@ -1,7 +1,0 @@
-user: automation
-home: "/home/{{ user }}"
-app_data: "{{ home }}/.diesel"
-
-hostname: "{{ env }}"
-domain: diesel.net
-fqdn: "{{ hostname }}.{{ domain }}"

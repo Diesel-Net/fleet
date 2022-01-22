@@ -1,8 +1,10 @@
 all:
   children:
     
+    
     manager:
       hosts:
+
         test.diesel.net:
 
   vars:

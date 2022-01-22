@@ -1,9 +1,20 @@
 all:
   children:
     
+
     manager:
       hosts:
+
         dev.diesel.net:
+
+        automation-station.diesel.net:
+          auto_reboots: no
+
+
+    offline:
+      hosts:
+      
+        automation-station.diesel.net:
   
   vars:
     ansible_user: automation

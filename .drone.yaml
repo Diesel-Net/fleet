@@ -3,6 +3,9 @@ kind: pipeline
 type: docker
 name: swarm bootstrap
 
+concurrency:
+  limit: 1
+
 steps:
 
   - name: bootstrap
@@ -44,6 +47,9 @@ trigger:
 kind: pipeline
 type: docker
 name: automated tests (run remaining playbooks)
+
+concurrency:
+  limit: 1
 
 steps:
 
@@ -94,6 +100,8 @@ kind: pipeline
 type: docker
 name: daily maintenance
 
+concurrency:
+  limit: 1
 
 steps:
   - name: update dev
@@ -159,6 +167,8 @@ kind: pipeline
 type: docker
 name: weekly maintenance
 
+concurrency:
+  limit: 1
 
 steps:
   - name: clean dev

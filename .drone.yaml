@@ -43,7 +43,7 @@ trigger:
 
 kind: pipeline
 type: docker
-name: automated tests (run all playbooks)
+name: automated tests (run remaining playbooks)
 
 steps:
 

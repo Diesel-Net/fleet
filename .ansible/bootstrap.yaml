@@ -2,6 +2,7 @@
 
 - hosts: manager:worker
   strategy: linear
+  gather_facts: no
   tasks:
 
     - name: wait for connections

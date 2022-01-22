@@ -62,6 +62,7 @@ steps:
       PROXMOX_PASS:
         from_secret: proxmox_pass
     settings:
+      requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/update.yaml
       inventory: .ansible/inventory/development
@@ -79,6 +80,7 @@ steps:
       PROXMOX_PASS:
         from_secret: proxmox_pass
     settings:
+      requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/clean.yaml
       inventory: .ansible/inventory/development
@@ -113,6 +115,7 @@ steps:
       PROXMOX_PASS:
         from_secret: proxmox_pass
     settings:
+      requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/update.yaml
       inventory: .ansible/inventory/development
@@ -130,6 +133,7 @@ steps:
       PROXMOX_PASS:
         from_secret: proxmox_pass
     settings:
+      requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/update.yaml
       inventory: .ansible/inventory/stable
@@ -147,6 +151,7 @@ steps:
       PROXMOX_PASS:
         from_secret: proxmox_pass
     settings:
+      requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/update.yaml
       inventory: .ansible/inventory/production
@@ -180,6 +185,7 @@ steps:
       PROXMOX_PASS:
         from_secret: proxmox_pass
     settings:
+      requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/clean.yaml
       inventory: .ansible/inventory/development
@@ -197,6 +203,7 @@ steps:
       PROXMOX_PASS:
         from_secret: proxmox_pass
     settings:
+      requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/clean.yaml
       inventory: .ansible/inventory/stable
@@ -214,6 +221,7 @@ steps:
       PROXMOX_PASS:
         from_secret: proxmox_pass
     settings:
+      requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/clean.yaml
       inventory: .ansible/inventory/production

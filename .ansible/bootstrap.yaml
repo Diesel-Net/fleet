@@ -2,7 +2,7 @@
 
 
 - hosts: manager:worker
-  strategy: linear
+  strategy: free
   gather_facts: no
   tasks:
 

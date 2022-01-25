@@ -7,14 +7,14 @@ all:
 
         dev.diesel.net:
 
-        automation-station.diesel.net:
+        unity.diesel.net:
           auto_reboots: no
 
 
     offline:
       hosts:
       
-        automation-station.diesel.net:
+        unity.diesel.net:
   
   vars:
     ansible_user: automation

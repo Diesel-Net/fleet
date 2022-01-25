@@ -1,5 +1,6 @@
 - import_playbook: power_on.yaml
 
+
 - hosts: manager:worker
   strategy: linear
   gather_facts: no
@@ -15,15 +16,14 @@
 
 - hosts: manager:worker
   strategy: free
-  tasks:
-
-    - include_role:
-        name: ubuntu
-        tasks_from: setup_user
   vars:
     ansible_user: "{{ lookup('env', 'CLOUD_INIT_USER') }}"
     ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASS') }}"
-    ansible_sudo_pass: "{{ ansible_ssh_pass }}"   
+    ansible_sudo_pass: "{{ ansible_ssh_pass }}"
+  tasks:
+    - include_role:
+        name: ubuntu
+        tasks_from: setup_user
 
 
 - hosts: manager:worker
@@ -39,6 +39,7 @@
         name: docker
         tasks_from: swarm_init
 
+
 - hosts: nvidia
   strategy: free
   tasks:
@@ -49,5 +50,6 @@
     - include_role:
         name: docker
         tasks_from: install_nvidia_toolkit
+
 
 - import_playbook: power_off.yaml

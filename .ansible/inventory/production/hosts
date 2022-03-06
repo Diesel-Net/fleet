@@ -16,13 +16,13 @@ all:
 
         es.diesel.net:
 
-        gpu.diesel.net:
+        quadro.diesel.net:
         
 
     nvidia:
       hosts:
 
-        gpu.diesel.net:
+        quadro.diesel.net:
 
 
     offline:

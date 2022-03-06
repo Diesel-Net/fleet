@@ -9,13 +9,12 @@
     - pause:
         seconds: 30
 
-    - include_role:
-        name: ubuntu
-        tasks_from: scan_hosts
-
     - name: wait for connections
       wait_for_connection:
 
+    - include_role:
+        name: ubuntu
+        tasks_from: scan_hosts
 
 - hosts: manager:worker
   strategy: linear

@@ -1,14 +1,41 @@
 ---
 kind: pipeline
 type: docker
-name: swarm bootstrap
+name: scan
 
 concurrency:
   limit: 1
 
 steps:
 
-  - name: bootstrap
+  - name: host keyscan
+    image: docker.nexus.diesel.net/drone-ansible:5.3.0
+    environment:
+    settings:
+      requirements: .ansible/files/requirements.txt
+      inventory: .ansible/inventories/fleet
+      galaxy: .ansible/roles/requirements.yaml
+      playbook: .ansible/scan_hosts.yaml
+      vault_password:
+        from_secret: ansible_vault_password 
+
+trigger:
+  branch:
+    - development
+  event:
+    - push
+
+---
+kind: pipeline
+type: docker
+name: bootstrap
+
+concurrency:
+  limit: 1
+
+steps:
+
+  - name: bootstrap machines
     image: docker.nexus.diesel.net/drone-ansible:5.3.0
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
@@ -22,79 +49,19 @@ steps:
         from_secret: proxmox_pass
     settings:
       requirements: .ansible/files/requirements.txt
+      inventory: .ansible/inventories/fleet
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/bootstrap.yaml
       private_key:
         from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password 
-    commands:
-      # dynamically select inventory based on Git branch/tag
-      - version=$DRONE_BRANCH
-      - if [ ! -z $DRONE_TAG ]; then version=production; fi
-      - /bin/drone-ansible --inventory .ansible/inventory/$$version/hosts
 
 trigger:
   branch:
-    - development
     - stable
   event:
     - push
-    - tag
-
----
-
-kind: pipeline
-type: docker
-name: automated tests (run remaining playbooks)
-
-concurrency:
-  limit: 1
-
-steps: []
-
-  # - name: update dev
-  #   image: docker.nexus.diesel.net/drone-ansible:5.3.0
-  #   environment:
-  #     ANSIBLE_CONFIG: .ansible/ansible.cfg
-  #     PROXMOX_USER:
-  #       from_secret: proxmox_user
-  #     PROXMOX_PASS:
-  #       from_secret: proxmox_pass
-  #   settings:
-  #     requirements: .ansible/files/requirements.txt
-  #     galaxy: .ansible/roles/requirements.yaml
-  #     playbook: .ansible/update.yaml
-  #     inventory: .ansible/inventory/development
-  #     private_key:
-  #       from_secret: automation_id_rsa
-  #     vault_password:
-  #       from_secret: ansible_vault_password
-
-  # - name: clean dev
-  #   image: docker.nexus.diesel.net/drone-ansible:5.3.0
-  #   environment:
-  #     ANSIBLE_CONFIG: .ansible/ansible.cfg
-  #     PROXMOX_USER:
-  #       from_secret: proxmox_user
-  #     PROXMOX_PASS:
-  #       from_secret: proxmox_pass
-  #   settings:
-  #     requirements: .ansible/files/requirements.txt
-  #     galaxy: .ansible/roles/requirements.yaml
-  #     playbook: .ansible/clean.yaml
-  #     inventory: .ansible/inventory/development
-  #     private_key:
-  #       from_secret: automation_id_rsa
-  #     vault_password:
-  #       from_secret: ansible_vault_password
-
-trigger:
-  branch:
-    - development
-
-depends_on:
-  - 'swarm bootstrap'
 
 ---
 
@@ -106,7 +73,7 @@ concurrency:
   limit: 1
 
 steps:
-  - name: update dev
+  - name: update packages
     image: docker.nexus.diesel.net/drone-ansible:5.3.0
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
@@ -118,43 +85,7 @@ steps:
       requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/update.yaml
-      inventory: .ansible/inventory/development
-      private_key:
-        from_secret: automation_id_rsa
-      vault_password:
-        from_secret: ansible_vault_password
-
-  - name: update test
-    image: docker.nexus.diesel.net/drone-ansible:5.3.0
-    environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
-      PROXMOX_USER:
-        from_secret: proxmox_user
-      PROXMOX_PASS:
-        from_secret: proxmox_pass
-    settings:
-      requirements: .ansible/files/requirements.txt
-      galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/update.yaml
-      inventory: .ansible/inventory/stable
-      private_key:
-        from_secret: automation_id_rsa
-      vault_password:
-        from_secret: ansible_vault_password
-
-  - name: update prod
-    image: docker.nexus.diesel.net/drone-ansible:5.3.0
-    environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
-      PROXMOX_USER:
-        from_secret: proxmox_user
-      PROXMOX_PASS:
-        from_secret: proxmox_pass
-    settings:
-      requirements: .ansible/files/requirements.txt
-      galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/update.yaml
-      inventory: .ansible/inventory/production
+      inventory: .ansible/inventories/fleet
       private_key:
         from_secret: automation_id_rsa
       vault_password:
@@ -176,7 +107,7 @@ concurrency:
   limit: 1
 
 steps:
-  - name: clean dev
+  - name: clean docker artifacts
     image: docker.nexus.diesel.net/drone-ansible:5.3.0
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
@@ -188,47 +119,12 @@ steps:
       requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/clean.yaml
-      inventory: .ansible/inventory/development
+      inventory: .ansible/inventories/fleet
       private_key:
         from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password
 
-  - name: clean test
-    image: docker.nexus.diesel.net/drone-ansible:5.3.0
-    environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
-      PROXMOX_USER:
-        from_secret: proxmox_user
-      PROXMOX_PASS:
-        from_secret: proxmox_pass
-    settings:
-      requirements: .ansible/files/requirements.txt
-      galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/clean.yaml
-      inventory: .ansible/inventory/stable
-      private_key:
-        from_secret: automation_id_rsa
-      vault_password:
-        from_secret: ansible_vault_password
-
-  - name: clean prod
-    image: docker.nexus.diesel.net/drone-ansible:5.3.0
-    environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
-      PROXMOX_USER:
-        from_secret: proxmox_user
-      PROXMOX_PASS:
-        from_secret: proxmox_pass
-    settings:
-      requirements: .ansible/files/requirements.txt
-      galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/clean.yaml
-      inventory: .ansible/inventory/production
-      private_key:
-        from_secret: automation_id_rsa
-      vault_password:
-        from_secret: ansible_vault_password
 
 trigger:
   event:

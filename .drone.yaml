@@ -13,7 +13,7 @@ steps:
     environment:
     settings:
       requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/fleet.yaml.yaml
+      inventory: .ansible/inventories/fleet.yaml
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/scan_hosts.yaml
       vault_password:

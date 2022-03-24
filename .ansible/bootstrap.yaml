@@ -17,42 +17,42 @@
 
  
 
-- hosts: manager:worker
-  strategy: linear
-  vars:
-    ansible_user: "{{ lookup('env', 'CLOUD_INIT_USER') }}"
-    ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASS') }}"
-    ansible_sudo_pass: "{{ ansible_ssh_pass }}"
-  tasks:
-    - include_role:
-        name: ubuntu
-        tasks_from: setup_user
+# - hosts: manager:worker
+#   strategy: linear
+#   vars:
+#     ansible_user: "{{ lookup('env', 'CLOUD_INIT_USER') }}"
+#     ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASS') }}"
+#     ansible_sudo_pass: "{{ ansible_ssh_pass }}"
+#   tasks:
+#     - include_role:
+#         name: ubuntu
+#         tasks_from: setup_user
 
 
-- hosts: manager:worker
-  strategy: linear
-  roles:
-    - ubuntu
-  tasks:
-    - include_role:
-        name: docker
-        tasks_from: install
+# - hosts: manager:worker
+#   strategy: linear
+#   roles:
+#     - ubuntu
+#   tasks:
+#     - include_role:
+#         name: docker
+#         tasks_from: install
 
-    - include_role:
-        name: docker
-        tasks_from: swarm_init
+#     - include_role:
+#         name: docker
+#         tasks_from: swarm_init
 
 
-- hosts: nvidia
-  strategy: linear
-  tasks:
-    - include_role:
-        name: ubuntu
-        tasks_from: install_nvidia_drivers
+# - hosts: nvidia
+#   strategy: linear
+#   tasks:
+#     - include_role:
+#         name: ubuntu
+#         tasks_from: install_nvidia_drivers
 
-    - include_role:
-        name: docker
-        tasks_from: install_nvidia_toolkit
+#     - include_role:
+#         name: docker
+#         tasks_from: install_nvidia_toolkit
 
 
 #- import_playbook: power_off.yaml

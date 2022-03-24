@@ -1,22 +1,5 @@
-#- import_playbook: power_on.yaml
-
-
-- hosts: manager:worker
-  strategy: linear
-  gather_facts: no
-  tasks:
-
-    # this will hang (until timeout is reached) if host keys change (host key verification failure)
-    # https://github.com/ansible/ansible/issues/58172
-    # need to test with NEW hosts to see how this behaves
-    #- wait_for_connection:
-
-    - include_role:
-        name: ubuntu
-        tasks_from: scan_hosts
-
+- import_playbook: power_on.yaml
  
-
 - hosts: manager:worker
   strategy: linear
   vars:
@@ -24,6 +7,11 @@
     ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASS') }}"
     ansible_sudo_pass: "{{ ansible_ssh_pass }}"
   tasks:
+    # this will hang (until timeout is reached) if host keys change (host key verification failure)
+    # https://github.com/ansible/ansible/issues/58172
+    # need to test with NEW hosts to see how this behaves
+    - wait_for_connection:
+
     - include_role:
         name: ubuntu
         tasks_from: setup_user
@@ -55,4 +43,4 @@
         tasks_from: install_nvidia_toolkit
 
 
-#- import_playbook: power_off.yaml
+- import_playbook: power_off.yaml

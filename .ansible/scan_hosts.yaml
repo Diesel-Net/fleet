@@ -1,0 +1,8 @@
+- hosts: manager:worker
+  strategy: linear
+  gather_facts: no
+  tasks:
+
+    - include_role:
+        name: ubuntu
+        tasks_from: scan_hosts

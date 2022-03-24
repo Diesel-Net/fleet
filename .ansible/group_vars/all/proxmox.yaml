@@ -1,5 +1,0 @@
-proxmox_realm: pve
-proxmox_user: '{{ lookup("env", "PROXMOX_USER") }}@{{ proxmox_realm }}'
-proxmox_password: '{{ lookup("env", "PROXMOX_PASS") }}'
-proxmox_api_host: pve.diesel.net
-proxmox_node: pve

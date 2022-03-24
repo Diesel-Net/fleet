@@ -2,6 +2,7 @@
  
 - hosts: manager:worker
   strategy: linear
+  gather_facts: no
   vars:
     ansible_user: "{{ lookup('env', 'CLOUD_INIT_USER') }}"
     ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASS') }}"

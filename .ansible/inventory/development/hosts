@@ -5,6 +5,9 @@ all:
     manager:
       hosts:
 
+        # temporary
+        192.168.50.4:
+
         dev.diesel.net:
 
         unity.diesel.net:

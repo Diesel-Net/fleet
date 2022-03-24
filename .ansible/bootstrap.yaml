@@ -1,4 +1,4 @@
-- import_playbook: power_on.yaml
+#- import_playbook: power_on.yaml
 
 
 - hosts: manager:worker
@@ -6,7 +6,10 @@
   gather_facts: no
   tasks:
 
-    - wait_for_connection:
+    # this will hang (until timeout is reached) if host keys change (host key verification failure)
+    # https://github.com/ansible/ansible/issues/58172
+    # need to test with NEW hosts to see how this behaves
+    #- wait_for_connection:
 
     - include_role:
         name: ubuntu
@@ -52,4 +55,4 @@
         tasks_from: install_nvidia_toolkit
 
 
-- import_playbook: power_off.yaml
+#- import_playbook: power_off.yaml

@@ -9,7 +9,7 @@
     # this will hang (until timeout is reached) if host keys change (host key verification failure)
     # https://github.com/ansible/ansible/issues/58172
     # need to test with NEW hosts to see how this behaves
-    - wait_for_connection:
+    #- wait_for_connection:
 
     - include_role:
         name: ubuntu

@@ -7,6 +7,8 @@ all:
 
         dev.diesel.net:
 
+        fake.diesel.net:
+
         # unity.diesel.net:
         #   auto_reboots: no
 

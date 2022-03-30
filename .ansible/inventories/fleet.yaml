@@ -7,38 +7,38 @@ all:
 
         dev.diesel.net:
 
-        # unity.diesel.net:
-        #   auto_reboots: no
+        unity.diesel.net:
+          auto_reboots: no
 
-        # test.diesel.net:
+        test.diesel.net:
 
-        # prod.diesel.net:
+        prod.diesel.net:
 
-        # drone.diesel.net:
-        #   auto_reboots: no
+        drone.diesel.net:
+          auto_reboots: no
 
-        # tools.diesel.net:
+        tools.diesel.net:
 
-        # games.diesel.net:
-        #   auto_reboots: no
+        games.diesel.net:
+          auto_reboots: no
 
-        # es.diesel.net:
+        es.diesel.net:
 
-        # quadro.diesel.net:
+        quadro.diesel.net:
         
 
-    # nvidia:
-    #   hosts:
+    nvidia:
+      hosts:
 
-    #     quadro.diesel.net:
+        quadro.diesel.net:
 
 
-    # offline:
-    #   hosts:
+    offline:
+      hosts:
 
-    #     games.diesel.net:
+        games.diesel.net:
 
-    #     unity.diesel.net:
+        unity.diesel.net:
 
   vars:
     ansible_user: automation

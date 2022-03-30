@@ -18,6 +18,7 @@ all:
           auto_reboots: no
 
         tools.diesel.net:
+          auto_reboots: no
 
         games.diesel.net:
           auto_reboots: no

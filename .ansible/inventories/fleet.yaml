@@ -23,7 +23,7 @@ all:
         games.diesel.net:
           auto_reboots: no
 
-        es.diesel.net:
+        #es.diesel.net:
 
         quadro.diesel.net:
         

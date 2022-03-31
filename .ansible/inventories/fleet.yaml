@@ -20,11 +20,6 @@ all:
         tools.diesel.net:
           auto_reboots: no
 
-        games.diesel.net:
-          auto_reboots: no
-
-        es.diesel.net:
-
         quadro.diesel.net:
         
 
@@ -36,8 +31,6 @@ all:
 
     offline:
       hosts:
-
-        games.diesel.net:
 
         unity.diesel.net:
 

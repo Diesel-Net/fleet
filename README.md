@@ -27,8 +27,5 @@ You will need to have the ansible-vault password file configured on your machine
 
 
 ```bash
-export CLOUD_INIT_USER=xxxx
-export CLOUD_INIT_PASS=xxxx
-
 ansible-playbook .ansible/bootstrap.yaml --inventory .ansible/inventories/fleet.yaml --limit development
 ```

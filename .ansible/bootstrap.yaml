@@ -1,6 +1,6 @@
 - import_playbook: power_on.yaml
  
-- hosts: manager:worker:development
+- hosts: manager:worker
   strategy: linear
   gather_facts: no
   vars:

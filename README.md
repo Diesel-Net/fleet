@@ -25,17 +25,7 @@ pip3 install -r .ansible/files/requirements.txt
 
 You will need to have the ansible-vault password file configured on your machine. Please read the relevant [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source) for more information. It is typically a good idea to test changes against the `development` inventory.
 
-`Bootstrap` the **development** fleet.
-```bash
-ansible-playbook .ansible/bootstrap.yaml -i .ansible/inventory/development
-```
 
-`Clean` the **development** fleet.
 ```bash
-ansible-playbook .ansible/clean.yaml -i .ansible/inventory/development
-```
-
-`Update` the **development** fleet.
-```bash
-ansible-playbook .ansible/update.yaml -i .ansible/inventory/development
+ansible-playbook .ansible/bootstrap.yaml --inventory .ansible/inventories/fleet.yaml --limit development
 ```

@@ -1,6 +1,10 @@
 all:
   children:
 
+    development:
+      hosts:
+        dev.diesel.net:
+
 
     manager:
       hosts:

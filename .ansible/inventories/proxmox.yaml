@@ -12,7 +12,7 @@ all:
         dev.diesel.net:
           auto_reboot: yes
 
-        unity.diesel.net:
+        # unity.diesel.net:
 
         test.diesel.net:
           auto_reboot: yes
@@ -31,12 +31,13 @@ all:
       hosts:
 
         quadro.diesel.net:
+          auto_reboot: yes
 
 
-    offline:
-      hosts:
+    # offline:
+    #   hosts:
 
-        unity.diesel.net:
+    #     unity.diesel.net:
 
   vars:
     ansible_user: automation

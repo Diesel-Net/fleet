@@ -18,25 +18,21 @@ all:
           auto_reboot: yes
 
         prod.diesel.net:
-          auto_reboot: yes
 
         drone.diesel.net:
 
         tools.diesel.net:
 
         quadro.diesel.net:
-        
+          auto_reboot: yes
 
     nvidia:
       hosts:
 
         quadro.diesel.net:
-          auto_reboot: yes
-
 
     # offline:
     #   hosts:
-
     #     unity.diesel.net:
 
   vars:

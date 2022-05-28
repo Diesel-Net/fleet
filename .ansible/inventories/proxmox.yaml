@@ -6,24 +6,21 @@ all:
       hosts:
 
         dev.diesel.net:
+          auto_reboot: yes
 
         unity.diesel.net:
-          auto_reboots: no
 
         test.diesel.net:
+          auto_reboot: yes
 
         prod.diesel.net:
+          auto_reboot: yes
 
         drone.diesel.net:
-          auto_reboots: no
 
         tools.diesel.net:
-          auto_reboots: no
 
         games.diesel.net:
-          auto_reboots: no
-
-        #es.diesel.net:
 
         quadro.diesel.net:
         

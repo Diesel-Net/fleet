@@ -13,7 +13,7 @@ steps:
     environment:
     settings:
       requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/fleet.yaml
+      inventory: .ansible/inventories/proxmox.yaml
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/scan_hosts.yaml
       vault_password:
@@ -51,7 +51,7 @@ steps:
         from_secret: proxmox_pass
     settings:
       requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/fleet.yaml
+      inventory: .ansible/inventories/proxmox.yaml
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/bootstrap.yaml
       private_key:
@@ -87,7 +87,7 @@ steps:
       requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/update.yaml
-      inventory: .ansible/inventories/fleet.yaml
+      inventory: .ansible/inventories/proxmox.yaml
       private_key:
         from_secret: automation_id_rsa
       vault_password:
@@ -121,7 +121,7 @@ steps:
       requirements: .ansible/files/requirements.txt
       galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/clean.yaml
-      inventory: .ansible/inventories/fleet.yaml
+      inventory: .ansible/inventories/proxmox.yaml
       private_key:
         from_secret: automation_id_rsa
       vault_password:

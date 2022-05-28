@@ -24,8 +24,6 @@ all:
 
         tools.diesel.net:
 
-        games.diesel.net:
-
         quadro.diesel.net:
         
 
@@ -37,8 +35,6 @@ all:
 
     offline:
       hosts:
-
-        games.diesel.net:
 
         unity.diesel.net:
 

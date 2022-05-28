@@ -8,11 +8,7 @@
     ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASS') }}"
     ansible_sudo_pass: "{{ ansible_ssh_pass }}"
   tasks:
-    # this will hang (until timeout is reached) if host key changes (host key verification failure)
-    # https://github.com/ansible/ansible/issues/58172
-    # need to test with NEW hosts to see how this behaves
     - wait_for_connection:
-        delay: 15
         timeout: 120
 
     - include_role:
@@ -20,7 +16,7 @@
         tasks_from: setup_user
 
 
-- hosts: manager:worker
+- hosts: manager:worker:development
   strategy: linear
   roles:
     - ubuntu

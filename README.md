@@ -5,8 +5,7 @@ Leveraging Docker Engine's built-in [Swarm Mode](https://docs.docker.com/engine/
 
 ## Toolchain
 
-- ansible 4.7.0
-- ansible-core 2.11.6
+- ansible-core 2.13
 - python 3.9.7
 
 ## Installing Dependencies

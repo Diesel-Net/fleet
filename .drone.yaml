@@ -9,7 +9,7 @@ concurrency:
 steps:
 
   - name: host keyscan
-    image: docker.nexus.diesel.net/drone-ansible:5.3.0
+    image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
     settings:
       requirements: .ansible/files/requirements.txt
@@ -38,9 +38,8 @@ concurrency:
 steps:
 
   - name: bootstrap machines
-    image: docker.nexus.diesel.net/drone-ansible:5.3.0
+    image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
       CLOUD_INIT_USER:
         from_secret: cloud_init_user
       CLOUD_INIT_PASS:
@@ -76,9 +75,8 @@ concurrency:
 
 steps:
   - name: update packages
-    image: docker.nexus.diesel.net/drone-ansible:5.3.0
+    image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
       PROXMOX_USER:
         from_secret: proxmox_user
       PROXMOX_PASS:
@@ -110,9 +108,8 @@ concurrency:
 
 steps:
   - name: clean docker artifacts
-    image: docker.nexus.diesel.net/drone-ansible:5.3.0
+    image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
-      ANSIBLE_CONFIG: .ansible/ansible.cfg
       PROXMOX_USER:
         from_secret: proxmox_user
       PROXMOX_PASS:

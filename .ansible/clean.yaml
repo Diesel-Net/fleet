@@ -12,6 +12,6 @@
         name: docker
         tasks_from: system_prune
       vars:
-        options: --volumes
+        options: --force --volumes
 
 - import_playbook: power_off.yaml

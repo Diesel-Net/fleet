@@ -18,9 +18,11 @@
 
 - hosts: manager:worker:development
   strategy: linear
-  roles:
-    - ubuntu
   tasks:
+    - include_role:
+        name: ubuntu
+        tasks_from: configure
+
     - include_role:
         name: docker
         tasks_from: install

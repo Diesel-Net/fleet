@@ -12,7 +12,8 @@ Leveraging Docker Engine's built-in [Swarm Mode](https://docs.docker.com/engine/
 
 Install necessary ansible roles.
 ```bash
-ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
+ansible-galaxy role install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
+ansible-galaxy collection install -r .ansible/roles/requirements.yaml --force
 ```
 
 Install `dns-python` required for [`community.general.dig`](https://docs.ansible.com/ansible/latest/collections/community/general/dig_lookup.html)
@@ -26,5 +27,5 @@ You will need to have the ansible-vault password file configured on your machine
 
 
 ```bash
-ansible-playbook .ansible/bootstrap.yaml --inventory .ansible/inventories/fleet.yaml --limit development
+ansible-playbook .ansible/bootstrap.yaml --inventory .ansible/inventories/proxmox.yaml --limit development
 ```

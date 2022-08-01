@@ -13,16 +13,12 @@
 
     - include_role:
         name: ubuntu
-        tasks_from: setup_user
+        tasks_from: configure
 
 
 - hosts: manager:worker:development
   strategy: linear
   tasks:
-    - include_role:
-        name: ubuntu
-        tasks_from: configure
-
     - include_role:
         name: docker
         tasks_from: install

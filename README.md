@@ -16,7 +16,7 @@ ansible-galaxy role install -r .ansible/roles/requirements.yaml -p .ansible/role
 ansible-galaxy collection install -r .ansible/roles/requirements.yaml --force
 ```
 
-Install `dns-python` required for [`community.general.dig`](https://docs.ansible.com/ansible/latest/collections/community/general/dig_lookup.html)
+Install [`dnspython`](https://www.dnspython.org/) required for [`community.general.dig`](https://docs.ansible.com/ansible/latest/collections/community/general/dig_lookup.html)
 ```bash
 pip3 install -r .ansible/files/requirements.txt
 ```

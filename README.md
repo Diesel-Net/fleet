@@ -26,6 +26,7 @@ pip3 install -r .ansible/files/requirements.txt
 You will need to have the ansible-vault password file configured on your machine. Please read the relevant [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source) for more information. It is typically a good idea to test changes against the `development` inventory.
 
 
+Test the "bootstrap" playbook against the `development` host group
 ```bash
 ansible-playbook .ansible/bootstrap.yaml --inventory .ansible/inventories/proxmox.yaml --limit development
 ```

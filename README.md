@@ -21,7 +21,7 @@ Install [`dnspython`](https://www.dnspython.org/) required for [`community.gener
 pip3 install -r .ansible/files/requirements.txt
 ```
 
-## Configure Swarm
+## Bootstrap Docker Swarm hosts
 
 You will need to have the ansible-vault password file configured on your machine. Please read the relevant [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source) for more information. It is typically a good idea to test changes against one or a few hosts in order to iron out any kinks.
 

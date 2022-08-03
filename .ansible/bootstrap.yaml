@@ -1,6 +1,6 @@
 - import_playbook: power_on.yaml
  
-- hosts: manager:worker
+- hosts: swarm_manager
   strategy: linear
   gather_facts: no
   vars:
@@ -13,13 +13,10 @@
 
     - include_role:
         name: ubuntu
-        tasks_from: setup_user
+        tasks_from: configure
 
-
-- hosts: manager:worker:development
+- hosts: swarm_manager
   strategy: linear
-  roles:
-    - ubuntu
   tasks:
     - include_role:
         name: docker

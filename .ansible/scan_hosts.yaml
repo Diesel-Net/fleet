@@ -1,6 +1,7 @@
-- hosts: manager:worker
+- hosts: all
   strategy: linear
   gather_facts: no
+  serial: 1
   tasks:
 
     - include_role:

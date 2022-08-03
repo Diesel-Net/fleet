@@ -1,6 +1,6 @@
 - import_playbook: power_on.yaml
 
-- hosts: manager:worker 
+- hosts: swarm_manager
   strategy: free
   gather_facts: no
   tasks:

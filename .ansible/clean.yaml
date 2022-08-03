@@ -1,6 +1,6 @@
 - import_playbook: power_on.yaml
 
-- hosts: manager:worker 
+- hosts: swarm_manager 
   strategy: free
   gather_facts: no
   tasks:
@@ -12,6 +12,6 @@
         name: docker
         tasks_from: system_prune
       vars:
-        options: --volumes
+        options: --force --volumes
 
 - import_playbook: power_off.yaml

@@ -1,39 +1,35 @@
 all:
   children:
 
-    development:
-      hosts:
-        dev.diesel.net:
+    swarm_manager:
+      children:
+        
+        dev:
+          hosts:
+            dev.diesel.net:
+              auto_reboot: yes
+        
+        test:
+          hosts:
+            test.diesel.net:
+              auto_reboot: yes
+        
+        prod:
+          hosts:
+            prod.diesel.net:
+            drone.diesel.net:
+            #unity.diesel.net:
+            tools.diesel.net:
 
-
-    manager:
-      hosts:
-
-        dev.diesel.net:
-          auto_reboot: yes
-
-        # unity.diesel.net:
-
-        test.diesel.net:
-          auto_reboot: yes
-
-        prod.diesel.net:
-
-        drone.diesel.net:
-
-        tools.diesel.net:
-
-        quadro.diesel.net:
-          auto_reboot: yes
-
-    nvidia:
-      hosts:
-
-        quadro.diesel.net:
-
-    # offline:
-    #   hosts:
-    #     unity.diesel.net:
+            quadro.diesel.net:
+              auto_reboot: yes
+          children:
+            nvidia:
+              hosts:
+                quadro.diesel.net:
+            # offline:
+            #   hosts:
+            #     unity.diesel.net:
 
   vars:
     ansible_user: automation

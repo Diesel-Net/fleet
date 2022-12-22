@@ -20,7 +20,8 @@ all:
             drone.diesel.net:
             #unity.diesel.net:
             tools.diesel.net:
-
+            pterodactyl.diesel.net:
+              auto_reboot: yes
             quadro.diesel.net:
               auto_reboot: yes
           children:

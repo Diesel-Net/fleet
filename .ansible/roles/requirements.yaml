@@ -8,7 +8,7 @@ roles:
 - name: ubuntu
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-ubuntu.git"
-  version: 3.0.0
+  version: 3.0.1
 
 - name: docker
   scm: git

@@ -4,16 +4,13 @@
 Leveraging Docker Engine's built-in [Swarm Mode](https://docs.docker.com/engine/swarm/) on Ubuntu Server LTS Virtual Machines. This is the first piece of code that should be executed against a fresh host on the `diesel.net` domain
 
 ## Toolchain
-
-- ansible-core 2.13
-- python 3.9.7
+- ansible-community 7.2.0
 
 ## Installing Dependencies
 
 Install necessary ansible roles.
 ```bash
-ansible-galaxy role install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
-ansible-galaxy collection install -r .ansible/roles/requirements.yaml --force
+ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
 ```
 
 Install [`dnspython`](https://www.dnspython.org/) required for [`community.general.dig`](https://docs.ansible.com/ansible/latest/collections/community/general/dig_lookup.html)

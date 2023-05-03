@@ -1,5 +1,3 @@
-- import_playbook: power_on.yaml
-
 - hosts: swarm_manager
   strategy: linear
   gather_facts: no
@@ -11,5 +9,3 @@
     - import_role:
         name: ubuntu
         tasks_from: update
-
-- import_playbook: power_off.yaml

@@ -4,33 +4,27 @@ all:
     swarm_manager:
       children:
         
-        dev:
+        nonprod:
           hosts:
+
             dev.diesel.net:
-              auto_reboot: yes
-        
-        test:
-          hosts:
             test.diesel.net:
-              auto_reboot: yes
         
         prod:
           hosts:
+
             prod.diesel.net:
             drone.diesel.net:
-            #unity.diesel.net:
             tools.diesel.net:
             pterodactyl.diesel.net:
-              auto_reboot: yes
             quadro.diesel.net:
-              auto_reboot: yes
+
           children:
             nvidia:
               hosts:
+
                 quadro.diesel.net:
-            # offline:
-            #   hosts:
-            #     unity.diesel.net:
+
 
   vars:
     ansible_user: automation

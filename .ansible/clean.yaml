@@ -1,5 +1,3 @@
-- import_playbook: power_on.yaml
-
 - hosts: swarm_manager 
   strategy: linear
   gather_facts: no
@@ -13,5 +11,3 @@
         tasks_from: system_prune
       vars:
         options: --force --volumes
-
-- import_playbook: power_off.yaml

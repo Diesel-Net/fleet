@@ -25,6 +25,6 @@ You will need to have the ansible-vault password file configured on your machine
 
 #### Scan for SSH host keys and then bootstrap the hosts but limited to just the `dev` host group:
 ```bash
-ansible-playbook .ansible/scan_hosts.yaml --inventory .ansible/inventories/proxmox.yaml --limit dev
-ansible-playbook .ansible/bootstrap.yaml --inventory .ansible/inventories/proxmox.yaml --limit dev
+ansible-playbook .ansible/scan_hosts.yaml --inventory .ansible/inventories/proxmox.yaml --limit dev.diesel.net
+ansible-playbook .ansible/bootstrap.yaml --inventory .ansible/inventories/proxmox.yaml --limit dev.diesel.net
 ```

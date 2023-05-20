@@ -10,3 +10,8 @@ all:
       hosts:
 
         dev.diesel.net:
+
+    fluentd:
+      hosts:
+
+        dev.diesel.net:

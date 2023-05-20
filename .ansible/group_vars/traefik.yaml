@@ -16,8 +16,6 @@ traefik_acme_resolvers:
     provider: cloudflare
     dns_resolver: 1.1.1.1:53
 
-cf_api_emai: {{ lookup("env", "CLOUDFLARE_API_EMAIL") }}
-cf_dns_api_token: {{ lookup("env", "CLOUDFLARE_DNS_API_TOKEN") }}
 
 # for the traefik dashboard
 traefik_cert_resolver: step-ca

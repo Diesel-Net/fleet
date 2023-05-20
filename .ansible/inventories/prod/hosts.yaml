@@ -26,3 +26,11 @@ all:
         pterodactyl.diesel.net:
         quadro.diesel.net:
 
+    fluentd:
+      hosts:
+
+        prod.diesel.net:
+        drone.diesel.net:
+        tools.diesel.net:
+        pterodactyl.diesel.net:
+        quadro.diesel.net:

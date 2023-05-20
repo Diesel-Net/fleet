@@ -69,7 +69,7 @@ steps:
       CLOUD_INIT_USERNAME:
         from_secret: cloud_init_username
       CLOUD_INIT_PASSSWORD:
-        from_secret: cloud_init_passsword
+        from_secret: cloud_init_password
       ACME_EMAIL:
         from_secret: acme_email
       CLOUDFLARE_API_EMAIL:

@@ -5,3 +5,13 @@ all:
       hosts:
         
         test.diesel.net:
+
+    traefik:
+      hosts:
+
+        test.diesel.net:
+
+    fluentd:
+      hosts:
+
+        test.diesel.net:

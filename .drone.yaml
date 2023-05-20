@@ -66,14 +66,10 @@ steps:
   - name: bootstrap (dev)
     image: docker.nexus.diesel.net/drone-ansible:7.2.0
     environment:
-      CLOUD_INIT_USER:
-        from_secret: cloud_init_user
-      CLOUD_INIT_PASS:
-        from_secret: cloud_init_pass
-      PROXMOX_USER:
-        from_secret: proxmox_user
-      PROXMOX_PASS:
-        from_secret: proxmox_pass
+      CLOUD_INIT_USERNAME:
+        from_secret: cloud_init_username
+      CLOUD_INIT_PASSSWORD:
+        from_secret: cloud_init_passsword
       ACME_EMAIL:
         from_secret: acme_email
       CLOUDFLARE_API_EMAIL:
@@ -82,6 +78,15 @@ steps:
         from_secret: cloudflare_dns_api_token
       TRAEFIK_HTPASSWORD:
         from_secret: traefik_htpasswd
+      LOKI_USERNAME:
+        from_secret: loki_username
+      LOKI_PASSWORD:
+        from_secret: loki_password
+      PROMETHEUS_USERNAME:
+        from_secret: prometheus_username
+      PROMETHEUS_PASSWORD:
+        from_secret: prometheus_password
+
     settings:
       requirements: .ansible/files/requirements.txt
       inventory: .ansible/inventories/dev
@@ -94,23 +99,27 @@ steps:
 
   # - name: bootstrap (test)
   #   image: docker.nexus.diesel.net/drone-ansible:7.2.0
-  #   environment:
-  #     CLOUD_INIT_USER:
-  #       from_secret: cloud_init_user
-  #     CLOUD_INIT_PASS:
-  #       from_secret: cloud_init_pass
-  #     PROXMOX_USER:
-  #       from_secret: proxmox_user
-  #     PROXMOX_PASS:
-  #       from_secret: proxmox_pass
-  #     ACME_EMAIL:
-  #       from_secret: acme_email
-  #     CLOUDFLARE_API_EMAIL:
-  #       from_secret: cloudflare_api_email
-  #     CLOUDFLARE_DNS_API_TOKEN:
-  #       from_secret: cloudflare_dns_api_token
-  #     TRAEFIK_HTPASSWORD:
-  #       from_secret: traefik_htpasswd
+    # environment:
+    #   CLOUD_INIT_USERNAME:
+    #     from_secret: cloud_init_username
+    #   CLOUD_INIT_PASSSWORD:
+    #     from_secret: cloud_init_passsword
+    #   ACME_EMAIL:
+    #     from_secret: acme_email
+    #   CLOUDFLARE_API_EMAIL:
+    #     from_secret: cloudflare_api_email
+    #   CLOUDFLARE_DNS_API_TOKEN:
+    #     from_secret: cloudflare_dns_api_token
+    #   TRAEFIK_HTPASSWORD:
+    #     from_secret: traefik_htpasswd
+    #   LOKI_USERNAME:
+    #     from_secret: loki_username
+    #   LOKI_PASSWORD:
+    #     from_secret: loki_password
+    #   PROMETHEUS_USERNAME:
+    #     from_secret: prometheus_username
+    #   PROMETHEUS_PASSWORD:
+    #     from_secret: prometheus_password
   #   settings:
   #     requirements: .ansible/files/requirements.txt
   #     inventory: .ansible/inventories/test
@@ -123,23 +132,27 @@ steps:
 
   # - name: bootstrap (prod)
   #   image: docker.nexus.diesel.net/drone-ansible:7.2.0
-  #   environment:
-  #     CLOUD_INIT_USER:
-  #       from_secret: cloud_init_user
-  #     CLOUD_INIT_PASS:
-  #       from_secret: cloud_init_pass
-  #     PROXMOX_USER:
-  #       from_secret: proxmox_user
-  #     PROXMOX_PASS:
-  #       from_secret: proxmox_pass
-  #     ACME_EMAIL:
-  #       from_secret: acme_email
-  #     CLOUDFLARE_API_EMAIL:
-  #       from_secret: cloudflare_api_email
-  #     CLOUDFLARE_DNS_API_TOKEN:
-  #       from_secret: cloudflare_dns_api_token
-  #     TRAEFIK_HTPASSWORD:
-  #       from_secret: traefik_htpasswd
+    # environment:
+    #   CLOUD_INIT_USERNAME:
+    #     from_secret: cloud_init_username
+    #   CLOUD_INIT_PASSSWORD:
+    #     from_secret: cloud_init_passsword
+    #   ACME_EMAIL:
+    #     from_secret: acme_email
+    #   CLOUDFLARE_API_EMAIL:
+    #     from_secret: cloudflare_api_email
+    #   CLOUDFLARE_DNS_API_TOKEN:
+    #     from_secret: cloudflare_dns_api_token
+    #   TRAEFIK_HTPASSWORD:
+    #     from_secret: traefik_htpasswd
+    #   LOKI_USERNAME:
+    #     from_secret: loki_username
+    #   LOKI_PASSWORD:
+    #     from_secret: loki_password
+    #   PROMETHEUS_USERNAME:
+    #     from_secret: prometheus_username
+    #   PROMETHEUS_PASSWORD:
+    #     from_secret: prometheus_password
   #   settings:
   #     requirements: .ansible/files/requirements.txt
   #     inventory: .ansible/inventories/prod

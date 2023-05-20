@@ -90,7 +90,7 @@ steps:
       private_key:
         from_secret: automation_id_rsa
       vault_password:
-        from_secret: ansible_vault_password 
+        from_secret: ansible_vault_password
 
   - name: bootstrap (test)
     image: docker.nexus.diesel.net/drone-ansible:7.2.0
@@ -119,7 +119,7 @@ steps:
       private_key:
         from_secret: automation_id_rsa
       vault_password:
-        from_secret: ansible_vault_password 
+        from_secret: ansible_vault_password
 
   - name: bootstrap (prod)
     image: docker.nexus.diesel.net/drone-ansible:7.2.0
@@ -148,7 +148,7 @@ steps:
       private_key:
         from_secret: automation_id_rsa
       vault_password:
-        from_secret: ansible_vault_password 
+        from_secret: ansible_vault_password
 
 trigger:
   branch:

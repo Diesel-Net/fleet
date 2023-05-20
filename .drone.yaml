@@ -68,7 +68,7 @@ steps:
     environment:
       CLOUD_INIT_USERNAME:
         from_secret: cloud_init_username
-      CLOUD_INIT_PASSSWORD:
+      CLOUD_INIT_PASSWORD:
         from_secret: cloud_init_password
       ACME_EMAIL:
         from_secret: acme_email
@@ -86,7 +86,6 @@ steps:
         from_secret: prometheus_username
       PROMETHEUS_PASSWORD:
         from_secret: prometheus_password
-
     settings:
       requirements: .ansible/files/requirements.txt
       inventory: .ansible/inventories/dev
@@ -96,72 +95,6 @@ steps:
         from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password
-
-  # - name: bootstrap (test)
-  #   image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    # environment:
-    #   CLOUD_INIT_USERNAME:
-    #     from_secret: cloud_init_username
-    #   CLOUD_INIT_PASSSWORD:
-    #     from_secret: cloud_init_passsword
-    #   ACME_EMAIL:
-    #     from_secret: acme_email
-    #   CLOUDFLARE_API_EMAIL:
-    #     from_secret: cloudflare_api_email
-    #   CLOUDFLARE_DNS_API_TOKEN:
-    #     from_secret: cloudflare_dns_api_token
-    #   TRAEFIK_HTPASSWORD:
-    #     from_secret: traefik_htpasswd
-    #   LOKI_USERNAME:
-    #     from_secret: loki_username
-    #   LOKI_PASSWORD:
-    #     from_secret: loki_password
-    #   PROMETHEUS_USERNAME:
-    #     from_secret: prometheus_username
-    #   PROMETHEUS_PASSWORD:
-    #     from_secret: prometheus_password
-  #   settings:
-  #     requirements: .ansible/files/requirements.txt
-  #     inventory: .ansible/inventories/test
-  #     galaxy: .ansible/roles/bootstrap_requirements.yaml
-  #     playbook: .ansible/bootstrap.yaml
-  #     private_key:
-  #       from_secret: automation_id_rsa
-  #     vault_password:
-  #       from_secret: ansible_vault_password
-
-  # - name: bootstrap (prod)
-  #   image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    # environment:
-    #   CLOUD_INIT_USERNAME:
-    #     from_secret: cloud_init_username
-    #   CLOUD_INIT_PASSSWORD:
-    #     from_secret: cloud_init_passsword
-    #   ACME_EMAIL:
-    #     from_secret: acme_email
-    #   CLOUDFLARE_API_EMAIL:
-    #     from_secret: cloudflare_api_email
-    #   CLOUDFLARE_DNS_API_TOKEN:
-    #     from_secret: cloudflare_dns_api_token
-    #   TRAEFIK_HTPASSWORD:
-    #     from_secret: traefik_htpasswd
-    #   LOKI_USERNAME:
-    #     from_secret: loki_username
-    #   LOKI_PASSWORD:
-    #     from_secret: loki_password
-    #   PROMETHEUS_USERNAME:
-    #     from_secret: prometheus_username
-    #   PROMETHEUS_PASSWORD:
-    #     from_secret: prometheus_password
-  #   settings:
-  #     requirements: .ansible/files/requirements.txt
-  #     inventory: .ansible/inventories/prod
-  #     galaxy: .ansible/roles/bootstrap_requirements.yaml
-  #     playbook: .ansible/bootstrap.yaml
-  #     private_key:
-  #       from_secret: automation_id_rsa
-  #     vault_password:
-  #       from_secret: ansible_vault_password
 
 trigger:
   branch:

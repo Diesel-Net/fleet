@@ -21,31 +21,31 @@ steps:
       private_key:
         from_secret: automation_id_rsa
 
-  - name: host keyscan (test)
-    image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    environment:
-    settings:
-      requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/test
-      galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/scan_hosts.yaml
-      vault_password:
-        from_secret: ansible_vault_password 
-      private_key:
-        from_secret: automation_id_rsa
+  # - name: host keyscan (test)
+  #   image: docker.nexus.diesel.net/drone-ansible:7.2.0
+  #   environment:
+  #   settings:
+  #     requirements: .ansible/files/requirements.txt
+  #     inventory: .ansible/inventories/test
+  #     galaxy: .ansible/roles/requirements.yaml
+  #     playbook: .ansible/scan_hosts.yaml
+  #     vault_password:
+  #       from_secret: ansible_vault_password 
+  #     private_key:
+  #       from_secret: automation_id_rsa
 
-  - name: host keyscan (prod)
-    image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    environment:
-    settings:
-      requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/prod
-      galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/scan_hosts.yaml
-      vault_password:
-        from_secret: ansible_vault_password 
-      private_key:
-        from_secret: automation_id_rsa
+  # - name: host keyscan (prod)
+  #   image: docker.nexus.diesel.net/drone-ansible:7.2.0
+  #   environment:
+  #   settings:
+  #     requirements: .ansible/files/requirements.txt
+  #     inventory: .ansible/inventories/prod
+  #     galaxy: .ansible/roles/requirements.yaml
+  #     playbook: .ansible/scan_hosts.yaml
+  #     vault_password:
+  #       from_secret: ansible_vault_password 
+  #     private_key:
+  #       from_secret: automation_id_rsa
 
 trigger:
   branch:
@@ -92,63 +92,63 @@ steps:
       vault_password:
         from_secret: ansible_vault_password
 
-  - name: bootstrap (test)
-    image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    environment:
-      CLOUD_INIT_USER:
-        from_secret: cloud_init_user
-      CLOUD_INIT_PASS:
-        from_secret: cloud_init_pass
-      PROXMOX_USER:
-        from_secret: proxmox_user
-      PROXMOX_PASS:
-        from_secret: proxmox_pass
-      ACME_EMAIL:
-        from_secret: acme_email
-      CLOUDFLARE_API_EMAIL:
-        from_secret: cloudflare_api_email
-      CLOUDFLARE_DNS_API_TOKEN:
-        from_secret: cloudflare_dns_api_token
-      TRAEFIK_HTPASSWORD:
-        from_secret: traefik_htpasswd
-    settings:
-      requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/test
-      galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/bootstrap.yaml
-      private_key:
-        from_secret: automation_id_rsa
-      vault_password:
-        from_secret: ansible_vault_password
+  # - name: bootstrap (test)
+  #   image: docker.nexus.diesel.net/drone-ansible:7.2.0
+  #   environment:
+  #     CLOUD_INIT_USER:
+  #       from_secret: cloud_init_user
+  #     CLOUD_INIT_PASS:
+  #       from_secret: cloud_init_pass
+  #     PROXMOX_USER:
+  #       from_secret: proxmox_user
+  #     PROXMOX_PASS:
+  #       from_secret: proxmox_pass
+  #     ACME_EMAIL:
+  #       from_secret: acme_email
+  #     CLOUDFLARE_API_EMAIL:
+  #       from_secret: cloudflare_api_email
+  #     CLOUDFLARE_DNS_API_TOKEN:
+  #       from_secret: cloudflare_dns_api_token
+  #     TRAEFIK_HTPASSWORD:
+  #       from_secret: traefik_htpasswd
+  #   settings:
+  #     requirements: .ansible/files/requirements.txt
+  #     inventory: .ansible/inventories/test
+  #     galaxy: .ansible/roles/requirements.yaml
+  #     playbook: .ansible/bootstrap.yaml
+  #     private_key:
+  #       from_secret: automation_id_rsa
+  #     vault_password:
+  #       from_secret: ansible_vault_password
 
-  - name: bootstrap (prod)
-    image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    environment:
-      CLOUD_INIT_USER:
-        from_secret: cloud_init_user
-      CLOUD_INIT_PASS:
-        from_secret: cloud_init_pass
-      PROXMOX_USER:
-        from_secret: proxmox_user
-      PROXMOX_PASS:
-        from_secret: proxmox_pass
-      ACME_EMAIL:
-        from_secret: acme_email
-      CLOUDFLARE_API_EMAIL:
-        from_secret: cloudflare_api_email
-      CLOUDFLARE_DNS_API_TOKEN:
-        from_secret: cloudflare_dns_api_token
-      TRAEFIK_HTPASSWORD:
-        from_secret: traefik_htpasswd
-    settings:
-      requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/prod
-      galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/bootstrap.yaml
-      private_key:
-        from_secret: automation_id_rsa
-      vault_password:
-        from_secret: ansible_vault_password
+  # - name: bootstrap (prod)
+  #   image: docker.nexus.diesel.net/drone-ansible:7.2.0
+  #   environment:
+  #     CLOUD_INIT_USER:
+  #       from_secret: cloud_init_user
+  #     CLOUD_INIT_PASS:
+  #       from_secret: cloud_init_pass
+  #     PROXMOX_USER:
+  #       from_secret: proxmox_user
+  #     PROXMOX_PASS:
+  #       from_secret: proxmox_pass
+  #     ACME_EMAIL:
+  #       from_secret: acme_email
+  #     CLOUDFLARE_API_EMAIL:
+  #       from_secret: cloudflare_api_email
+  #     CLOUDFLARE_DNS_API_TOKEN:
+  #       from_secret: cloudflare_dns_api_token
+  #     TRAEFIK_HTPASSWORD:
+  #       from_secret: traefik_htpasswd
+  #   settings:
+  #     requirements: .ansible/files/requirements.txt
+  #     inventory: .ansible/inventories/prod
+  #     galaxy: .ansible/roles/requirements.yaml
+  #     playbook: .ansible/bootstrap.yaml
+  #     private_key:
+  #       from_secret: automation_id_rsa
+  #     vault_password:
+  #       from_secret: ansible_vault_password
 
 trigger:
   branch:

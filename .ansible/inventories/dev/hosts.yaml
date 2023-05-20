@@ -5,3 +5,8 @@ all:
       hosts:
         
         dev.diesel.net:
+
+    traefik:
+      hosts:
+
+        dev.diesel.net:

@@ -1,0 +1,7 @@
+all:
+  children:
+
+    swarm_manager:
+      hosts:
+        
+        dev.diesel.net:

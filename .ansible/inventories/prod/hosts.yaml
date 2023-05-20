@@ -1,0 +1,27 @@
+all:
+  children:
+
+    swarm_manager:
+      hosts:
+
+        prod.diesel.net:
+        drone.diesel.net:
+        tools.diesel.net:
+        pterodactyl.diesel.net:
+        quadro.diesel.net:
+
+          
+    nvidia:
+      hosts:
+
+        quadro.diesel.net:
+
+
+    traefik:
+      hosts:
+
+        prod.diesel.net:
+        drone.diesel.net:
+        tools.diesel.net:
+        pterodactyl.diesel.net:
+        quadro.diesel.net:

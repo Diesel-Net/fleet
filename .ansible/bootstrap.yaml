@@ -48,13 +48,13 @@
     - application
     - fluentd
 
-- hosts: grafana-agent
+- hosts: grafana_agent
   strategy: linear
   roles:
     - application
     - grafana-agent
 
-- hosts: swarm-cronjob
+- hosts: swarm_cronjob
   strategy: linear
   roles:
     - application

@@ -48,9 +48,9 @@
     - application
     - fluentd
 
-- hosts: grafana-agent
-  strategy: linear
-  roles:
-    - application
-    - grafana-agent
+# - hosts: grafana-agent
+#   strategy: linear
+#   roles:
+#     - application
+#     - grafana-agent
 

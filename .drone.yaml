@@ -46,7 +46,7 @@ steps:
 
 trigger:
   branch:
-    - disable
+    - development
   event:
     - push
 

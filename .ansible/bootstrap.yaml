@@ -2,8 +2,8 @@
   strategy: linear
   gather_facts: no
   vars:
-    ansible_user: "{{ lookup('env', 'CLOUD_INIT_USER') }}"
-    ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASS') }}"
+    ansible_user: "{{ lookup('env', 'CLOUD_INIT_USERNAME') }}"
+    ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASSSWORD') }}"
     ansible_sudo_pass: "{{ ansible_ssh_pass }}"
   tasks:
     - wait_for_connection:

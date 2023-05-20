@@ -15,3 +15,8 @@ all:
       hosts:
 
         dev.diesel.net:
+
+    swarm_cronjob:
+      hosts:
+
+        dev.diesel.net:

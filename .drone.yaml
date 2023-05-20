@@ -14,7 +14,7 @@ steps:
     settings:
       requirements: .ansible/files/requirements.txt
       inventory: .ansible/inventories/dev
-      galaxy: .ansible/roles/requirements.yaml
+      galaxy: .ansible/roles/scan_requirements.yaml
       playbook: .ansible/scan.yaml
       vault_password:
         from_secret: ansible_vault_password 
@@ -27,7 +27,7 @@ steps:
     settings:
       requirements: .ansible/files/requirements.txt
       inventory: .ansible/inventories/test
-      galaxy: .ansible/roles/requirements.yaml
+      galaxy: .ansible/roles/scan_requirements.yaml
       playbook: .ansible/scan.yaml
       vault_password:
         from_secret: ansible_vault_password 
@@ -40,7 +40,7 @@ steps:
     settings:
       requirements: .ansible/files/requirements.txt
       inventory: .ansible/inventories/prod
-      galaxy: .ansible/roles/requirements.yaml
+      galaxy: .ansible/roles/scan_requirements.yaml
       playbook: .ansible/scan.yaml
       vault_password:
         from_secret: ansible_vault_password 
@@ -85,7 +85,7 @@ steps:
     settings:
       requirements: .ansible/files/requirements.txt
       inventory: .ansible/inventories/dev
-      galaxy: .ansible/roles/requirements.yaml
+      galaxy: .ansible/roles/bootstrap_requirements.yaml
       playbook: .ansible/bootstrap.yaml
       private_key:
         from_secret: automation_id_rsa
@@ -114,7 +114,7 @@ steps:
   #   settings:
   #     requirements: .ansible/files/requirements.txt
   #     inventory: .ansible/inventories/test
-  #     galaxy: .ansible/roles/requirements.yaml
+  #     galaxy: .ansible/roles/bootstrap_requirements.yaml
   #     playbook: .ansible/bootstrap.yaml
   #     private_key:
   #       from_secret: automation_id_rsa
@@ -143,7 +143,7 @@ steps:
   #   settings:
   #     requirements: .ansible/files/requirements.txt
   #     inventory: .ansible/inventories/prod
-  #     galaxy: .ansible/roles/requirements.yaml
+  #     galaxy: .ansible/roles/bootstrap_requirements.yaml
   #     playbook: .ansible/bootstrap.yaml
   #     private_key:
   #       from_secret: automation_id_rsa

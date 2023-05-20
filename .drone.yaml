@@ -15,7 +15,7 @@ steps:
       requirements: .ansible/files/requirements.txt
       inventory: .ansible/inventories/dev
       galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/scan_hosts.yaml
+      playbook: .ansible/scan.yaml
       vault_password:
         from_secret: ansible_vault_password 
       private_key:
@@ -28,7 +28,7 @@ steps:
       requirements: .ansible/files/requirements.txt
       inventory: .ansible/inventories/test
       galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/scan_hosts.yaml
+      playbook: .ansible/scan.yaml
       vault_password:
         from_secret: ansible_vault_password 
       private_key:
@@ -41,7 +41,7 @@ steps:
       requirements: .ansible/files/requirements.txt
       inventory: .ansible/inventories/prod
       galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/scan_hosts.yaml
+      playbook: .ansible/scan.yaml
       vault_password:
         from_secret: ansible_vault_password 
       private_key:

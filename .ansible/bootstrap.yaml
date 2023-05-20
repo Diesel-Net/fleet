@@ -35,3 +35,22 @@
     - include_role:
         name: docker
         tasks_from: install_nvidia_toolkit
+
+# - hosts: traefik
+#   strategy: linear
+#   roles:
+#     - application
+#     - traefik
+
+- hosts: fluentd
+  strategy: linear
+  roles:
+    - application
+    - fluentd
+
+# - hosts: grafana-agent
+#   strategy: linear
+#   roles:
+#     - application
+#     - grafana-agent
+

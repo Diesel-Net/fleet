@@ -16,12 +16,12 @@
 - name: traefik
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-traefik.git"
-  version: development
+  version: 2.3.0
 
 - name: fluentd
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-fluentd.git"
-  version: development
+  version: 1.0.0
 
 - name: grafana-agent
   scm: git

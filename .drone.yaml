@@ -76,7 +76,7 @@ steps:
         from_secret: cf_api_email
       CF_DNS_API_TOKEN:
         from_secret: cf_dns_api_token
-      TRAEFIK_HTPASSWORD:
+      TRAEFIK_HTPASSWD:
         from_secret: traefik_htpasswd
       LOKI_USERNAME:
         from_secret: loki_username

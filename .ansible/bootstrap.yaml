@@ -1,17 +1,14 @@
-- hosts: swarm_manager
+- hosts: all
   strategy: linear
-  gather_facts: no
   vars:
-    ansible_user: "{{ lookup('env', 'CLOUD_INIT_USER') }}"
-    ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASS') }}"
+    ansible_user: "{{ lookup('env', 'CLOUD_INIT_USERNAME') }}"
+    ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASSWORD') }}"
     ansible_sudo_pass: "{{ ansible_ssh_pass }}"
   tasks:
-    - wait_for_connection:
-        timeout: 120
-
     - include_role:
         name: ubuntu
         tasks_from: configure
+
 
 - hosts: swarm_manager
   strategy: linear
@@ -35,3 +32,35 @@
     - include_role:
         name: docker
         tasks_from: install_nvidia_toolkit
+
+
+- hosts: traefik
+  strategy: linear
+  roles:
+    - application
+  tasks:
+    - include_role:
+        name: traefik
+        tasks_from: deploy
+
+
+- hosts: fluentd
+  strategy: linear
+  roles:
+    - application
+    - fluentd
+
+
+- hosts: grafana_agent
+  strategy: linear
+  roles:
+    - application
+    - grafana-agent
+
+
+- hosts: swarm_cronjob
+  strategy: linear
+  roles:
+    - application
+    - swarm-cronjob
+

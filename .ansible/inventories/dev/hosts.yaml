@@ -1,0 +1,22 @@
+all:
+  children:
+
+    swarm_manager:
+      hosts:
+        
+        dev.diesel.net:
+
+    traefik:
+      hosts:
+
+        dev.diesel.net:
+
+    fluentd:
+      hosts:
+
+        dev.diesel.net:
+
+    swarm_cronjob:
+      hosts:
+
+        dev.diesel.net:

@@ -8,14 +8,37 @@ concurrency:
 
 steps:
 
-  - name: host keyscan
+  - name: host keyscan (dev)
     image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    environment:
     settings:
       requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/proxmox.yaml
-      galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/scan_hosts.yaml
+      inventory: .ansible/inventories/dev
+      galaxy: .ansible/roles/scan_requirements.yaml
+      playbook: .ansible/scan.yaml
+      vault_password:
+        from_secret: ansible_vault_password 
+      private_key:
+        from_secret: automation_id_rsa
+
+  - name: host keyscan (test)
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
+    settings:
+      requirements: .ansible/files/requirements.txt
+      inventory: .ansible/inventories/test
+      galaxy: .ansible/roles/scan_requirements.yaml
+      playbook: .ansible/scan.yaml
+      vault_password:
+        from_secret: ansible_vault_password 
+      private_key:
+        from_secret: automation_id_rsa
+
+  - name: host keyscan (prod)
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
+    settings:
+      requirements: .ansible/files/requirements.txt
+      inventory: .ansible/inventories/prod
+      galaxy: .ansible/roles/scan_requirements.yaml
+      playbook: .ansible/scan.yaml
       vault_password:
         from_secret: ansible_vault_password 
       private_key:
@@ -37,26 +60,104 @@ concurrency:
 
 steps:
 
-  - name: bootstrap machines
+  - name: bootstrap (dev)
     image: docker.nexus.diesel.net/drone-ansible:7.2.0
     environment:
-      CLOUD_INIT_USER:
-        from_secret: cloud_init_user
-      CLOUD_INIT_PASS:
-        from_secret: cloud_init_pass
-      PROXMOX_USER:
-        from_secret: proxmox_user
-      PROXMOX_PASS:
-        from_secret: proxmox_pass
+      CLOUD_INIT_USERNAME:
+        from_secret: cloud_init_username
+      CLOUD_INIT_PASSWORD:
+        from_secret: cloud_init_password
+      ACME_EMAIL:
+        from_secret: acme_email
+      CF_API_EMAIL:
+        from_secret: cf_api_email
+      CF_DNS_API_TOKEN:
+        from_secret: cf_dns_api_token
+      TRAEFIK_HTPASSWD:
+        from_secret: traefik_htpasswd
+      LOKI_USERNAME:
+        from_secret: loki_username
+      LOKI_PASSWORD:
+        from_secret: loki_password
+      PROMETHEUS_USERNAME:
+        from_secret: prometheus_username
+      PROMETHEUS_PASSWORD:
+        from_secret: prometheus_password
     settings:
       requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/proxmox.yaml
-      galaxy: .ansible/roles/requirements.yaml
+      inventory: .ansible/inventories/dev
+      galaxy: .ansible/roles/bootstrap_requirements.yaml
       playbook: .ansible/bootstrap.yaml
       private_key:
         from_secret: automation_id_rsa
       vault_password:
-        from_secret: ansible_vault_password 
+        from_secret: ansible_vault_password
+
+  - name: bootstrap (test)
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
+    environment:
+      CLOUD_INIT_USERNAME:
+        from_secret: cloud_init_username
+      CLOUD_INIT_PASSWORD:
+        from_secret: cloud_init_password
+      ACME_EMAIL:
+        from_secret: acme_email
+      CF_API_EMAIL:
+        from_secret: cf_api_email
+      CF_DNS_API_TOKEN:
+        from_secret: cf_dns_api_token
+      TRAEFIK_HTPASSWD:
+        from_secret: traefik_htpasswd
+      LOKI_USERNAME:
+        from_secret: loki_username
+      LOKI_PASSWORD:
+        from_secret: loki_password
+      PROMETHEUS_USERNAME:
+        from_secret: prometheus_username
+      PROMETHEUS_PASSWORD:
+        from_secret: prometheus_password
+    settings:
+      requirements: .ansible/files/requirements.txt
+      inventory: .ansible/inventories/test
+      galaxy: .ansible/roles/bootstrap_requirements.yaml
+      playbook: .ansible/bootstrap.yaml
+      private_key:
+        from_secret: automation_id_rsa
+      vault_password:
+        from_secret: ansible_vault_password
+
+  - name: bootstrap (prod)
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
+    environment:
+      CLOUD_INIT_USERNAME:
+        from_secret: cloud_init_username
+      CLOUD_INIT_PASSWORD:
+        from_secret: cloud_init_password
+      ACME_EMAIL:
+        from_secret: acme_email
+      CF_API_EMAIL:
+        from_secret: cf_api_email
+      CF_DNS_API_TOKEN:
+        from_secret: cf_dns_api_token
+      TRAEFIK_HTPASSWD:
+        from_secret: traefik_htpasswd
+      LOKI_USERNAME:
+        from_secret: loki_username
+      LOKI_PASSWORD:
+        from_secret: loki_password
+      PROMETHEUS_USERNAME:
+        from_secret: prometheus_username
+      PROMETHEUS_PASSWORD:
+        from_secret: prometheus_password
+    settings:
+      requirements: .ansible/files/requirements.txt
+      inventory: .ansible/inventories/prod
+      galaxy: .ansible/roles/bootstrap_requirements.yaml
+      playbook: .ansible/bootstrap.yaml
+      private_key:
+        from_secret: automation_id_rsa
+      vault_password:
+        from_secret: ansible_vault_password
 
 trigger:
   branch:

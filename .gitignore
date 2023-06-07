@@ -1,4 +1,6 @@
 .ansible/roles/application
 .ansible/roles/ubuntu
 .ansible/roles/docker
-/sources.list
+.ansible/roles/fluentd
+.ansible/roles/grafana-agent
+.ansible/roles/traefik

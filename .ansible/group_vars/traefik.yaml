@@ -1,0 +1,33 @@
+traefik_acme_resolvers:
+
+  - name: lets-encrypt
+    challenge: HTTP-01
+    email: '{{ lookup("env", "ACME_EMAIL") }}'
+    url: https://acme-v02.api.letsencrypt.org/directory
+
+  - name: step-ca
+    challenge: HTTP-01
+    email: '{{ lookup("env", "ACME_EMAIL") }}'
+    url: https://ca.diesel.net/acme/acme/directory
+
+  - name: cloudflare
+    challenge: DNS-01
+    email: '{{ lookup("env", "ACME_EMAIL") }}'
+    provider: cloudflare
+    dns_resolver: 1.1.1.1:53
+
+
+# for the traefik dashboard
+traefik_cert_resolver: step-ca
+
+# dashboard basic-auth password
+traefik_htpasswd: '{{ lookup("env", "TRAEFIK_HTPASSWD") }}'
+
+# Add IP addresses or any proxies along the way (enables proxy chaining)
+traefik_trusted_ips:
+  - 10.10.0.1/24
+  - 10.10.10.1/24
+  - 10.10.20.1/24
+  - 10.10.30.1/24
+  - 10.10.50.1/24
+  - 192.168.50.1/24

@@ -32,4 +32,3 @@
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-swarm-cronjob.git"
   version: development
-

@@ -4,3 +4,4 @@
 .ansible/roles/fluentd
 .ansible/roles/grafana-agent
 .ansible/roles/traefik
+.DS_Store

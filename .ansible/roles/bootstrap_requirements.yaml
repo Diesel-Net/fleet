@@ -23,12 +23,12 @@
   src: "git@github.com:Diesel-Net/ansible-role-fluentd.git"
   version: 1.0.0
 
-- name: grafana-agent
-  scm: git
-  src: "git@github.com:Diesel-Net/ansible-role-grafana-agent.git"
-  version: development
+# - name: grafana-agent
+#   scm: git
+#   src: "git@github.com:Diesel-Net/ansible-role-grafana-agent.git"
+#   version: development
 
 - name: swarm-cronjob
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-swarm-cronjob.git"
-  version: development
+  version: 1.0.0

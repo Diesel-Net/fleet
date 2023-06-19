@@ -51,11 +51,11 @@
     - fluentd
 
 
-- hosts: grafana_agent
-  strategy: linear
-  roles:
-    - application
-    - grafana-agent
+# - hosts: grafana_agent
+#   strategy: linear
+#   roles:
+#     - application
+#     - grafana-agent
 
 
 - hosts: swarm_cronjob

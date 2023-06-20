@@ -16,7 +16,7 @@
 - name: traefik
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-traefik.git"
-  version: 2.3.2
+  version: development
 
 - name: fluentd
   scm: git
@@ -32,3 +32,4 @@
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-swarm-cronjob.git"
   version: 1.0.0
+

@@ -9,6 +9,7 @@ all:
         tools.diesel.net:
         pterodactyl.diesel.net:
         quadro.diesel.net:
+        gh-actions.diesel.net:  
 
           
     nvidia:
@@ -25,6 +26,7 @@ all:
         tools.diesel.net:
         pterodactyl.diesel.net:
         quadro.diesel.net:
+        gh-actions.diesel.net:
 
     fluentd:
       hosts:
@@ -34,3 +36,4 @@ all:
         tools.diesel.net:
         pterodactyl.diesel.net:
         quadro.diesel.net:
+        gh-actions.diesel.net:

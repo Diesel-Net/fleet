@@ -80,8 +80,6 @@ depends_on:
   - Check-In Test
 
 ---
-
----
 kind: pipeline
 type: docker
 name: Check-In

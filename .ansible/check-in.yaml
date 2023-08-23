@@ -1,9 +1,7 @@
 - hosts: all
   strategy: linear
-  gather_facts: no
-  serial: 1
   tasks:
 
     - include_role:
         name: ubuntu
-        tasks_from: scan_hosts
+        tasks_from: scan_host

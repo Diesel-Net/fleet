@@ -11,17 +11,17 @@
 - name: docker
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-docker.git"
-  version: development
+  version: 2.0.4
 
 - name: traefik
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-traefik.git"
-  version: 2.3.3
+  version: 2.3.4
 
 - name: fluentd
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-fluentd.git"
-  version: 1.0.0
+  version: development
 
 # - name: grafana-agent
 #   scm: git

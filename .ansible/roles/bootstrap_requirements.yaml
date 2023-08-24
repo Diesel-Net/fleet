@@ -6,7 +6,7 @@
 - name: application
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-application.git"
-  version: 2.1.0
+  version: 2.1.1
 
 - name: docker
   scm: git
@@ -26,10 +26,10 @@
 - name: grafana-agent
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-grafana-agent.git"
-  version: development
+  version: 1.0.0
 
 - name: swarm-cronjob
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-swarm-cronjob.git"
-  version: development
+  version: 1.0.1
 

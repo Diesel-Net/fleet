@@ -1,4 +1,4 @@
 - name: ubuntu
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-ubuntu.git"
-  version: 3.0.1
+  version: 3.1.0

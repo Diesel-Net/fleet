@@ -1,64 +1,40 @@
 ---
 kind: pipeline
 type: docker
-name: scan
-
+name: Check-In Test
 concurrency:
   limit: 1
 
-steps:
+steps: 
 
-  - name: host keyscan (dev)
+  - name: Check-In (dev)
     image: docker.nexus.diesel.net/drone-ansible:7.2.0
     settings:
-      requirements: .ansible/files/requirements.txt
       inventory: .ansible/inventories/dev
-      galaxy: .ansible/roles/scan_requirements.yaml
-      playbook: .ansible/scan.yaml
+      galaxy: .ansible/roles/check-in_requirements.yaml
+      playbook: .ansible/check-in.yaml
       vault_password:
         from_secret: ansible_vault_password 
       private_key:
         from_secret: automation_id_rsa
 
-  - name: host keyscan (test)
-    image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    settings:
-      requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/test
-      galaxy: .ansible/roles/scan_requirements.yaml
-      playbook: .ansible/scan.yaml
-      vault_password:
-        from_secret: ansible_vault_password 
-      private_key:
-        from_secret: automation_id_rsa
-
-  - name: host keyscan (prod)
-    image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    settings:
-      requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/prod
-      galaxy: .ansible/roles/scan_requirements.yaml
-      playbook: .ansible/scan.yaml
-      vault_password:
-        from_secret: ansible_vault_password 
-      private_key:
-        from_secret: automation_id_rsa
 
 trigger:
   branch:
     - development
+    - feature/*
+    - bugfix/*
   event:
     - push
 
 ---
 kind: pipeline
 type: docker
-name: bootstrap
-
+name: Bootstrap Test
 concurrency:
   limit: 1
 
-steps:
+steps: 
 
   - name: bootstrap (dev)
     image: docker.nexus.diesel.net/drone-ansible:7.2.0
@@ -84,74 +60,7 @@ steps:
       PROMETHEUS_PASSWORD:
         from_secret: prometheus_password
     settings:
-      requirements: .ansible/files/requirements.txt
       inventory: .ansible/inventories/dev
-      galaxy: .ansible/roles/bootstrap_requirements.yaml
-      playbook: .ansible/bootstrap.yaml
-      private_key:
-        from_secret: automation_id_rsa
-      vault_password:
-        from_secret: ansible_vault_password
-
-  - name: bootstrap (test)
-    image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    environment:
-      CLOUD_INIT_USERNAME:
-        from_secret: cloud_init_username
-      CLOUD_INIT_PASSWORD:
-        from_secret: cloud_init_password
-      ACME_EMAIL:
-        from_secret: acme_email
-      CF_API_EMAIL:
-        from_secret: cf_api_email
-      CF_DNS_API_TOKEN:
-        from_secret: cf_dns_api_token
-      TRAEFIK_HTPASSWD:
-        from_secret: traefik_htpasswd
-      LOKI_USERNAME:
-        from_secret: loki_username
-      LOKI_PASSWORD:
-        from_secret: loki_password
-      PROMETHEUS_USERNAME:
-        from_secret: prometheus_username
-      PROMETHEUS_PASSWORD:
-        from_secret: prometheus_password
-    settings:
-      requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/test
-      galaxy: .ansible/roles/bootstrap_requirements.yaml
-      playbook: .ansible/bootstrap.yaml
-      private_key:
-        from_secret: automation_id_rsa
-      vault_password:
-        from_secret: ansible_vault_password
-
-  - name: bootstrap (prod)
-    image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    environment:
-      CLOUD_INIT_USERNAME:
-        from_secret: cloud_init_username
-      CLOUD_INIT_PASSWORD:
-        from_secret: cloud_init_password
-      ACME_EMAIL:
-        from_secret: acme_email
-      CF_API_EMAIL:
-        from_secret: cf_api_email
-      CF_DNS_API_TOKEN:
-        from_secret: cf_dns_api_token
-      TRAEFIK_HTPASSWD:
-        from_secret: traefik_htpasswd
-      LOKI_USERNAME:
-        from_secret: loki_username
-      LOKI_PASSWORD:
-        from_secret: loki_password
-      PROMETHEUS_USERNAME:
-        from_secret: prometheus_username
-      PROMETHEUS_PASSWORD:
-        from_secret: prometheus_password
-    settings:
-      requirements: .ansible/files/requirements.txt
-      inventory: .ansible/inventories/prod
       galaxy: .ansible/roles/bootstrap_requirements.yaml
       playbook: .ansible/bootstrap.yaml
       private_key:
@@ -162,10 +71,87 @@ steps:
 trigger:
   branch:
     - development
+    - feature/*
+    - bugfix/*
+  event:
+    - push
+
+depends_on:
+  - Check-In Test
+
+---
+kind: pipeline
+type: docker
+name: Check-In
+concurrency:
+  limit: 1
+
+steps:
+
+  - name: Check-In (prod)
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
+    settings:
+      inventory: .ansible/inventories/prod
+      galaxy: .ansible/roles/check-in_requirements.yaml
+      playbook: .ansible/check-in.yaml
+      vault_password:
+        from_secret: ansible_vault_password 
+      private_key:
+        from_secret: automation_id_rsa
+
+trigger:
+  branch:
+    - stable
+  event:
+    - push
+
+---
+kind: pipeline
+type: docker
+name: Bootstrap
+concurrency:
+  limit: 1
+
+steps:
+
+  - name: Bootstrap (prod)
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
+    environment:
+      CLOUD_INIT_USERNAME:
+        from_secret: cloud_init_username
+      CLOUD_INIT_PASSWORD:
+        from_secret: cloud_init_password
+      ACME_EMAIL:
+        from_secret: acme_email
+      CF_API_EMAIL:
+        from_secret: cf_api_email
+      CF_DNS_API_TOKEN:
+        from_secret: cf_dns_api_token
+      TRAEFIK_HTPASSWD:
+        from_secret: traefik_htpasswd
+      LOKI_USERNAME:
+        from_secret: loki_username
+      LOKI_PASSWORD:
+        from_secret: loki_password
+      PROMETHEUS_USERNAME:
+        from_secret: prometheus_username
+      PROMETHEUS_PASSWORD:
+        from_secret: prometheus_password
+    settings:
+      inventory: .ansible/inventories/prod
+      galaxy: .ansible/roles/bootstrap_requirements.yaml
+      playbook: .ansible/bootstrap.yaml
+      private_key:
+        from_secret: automation_id_rsa
+      vault_password:
+        from_secret: ansible_vault_password
+
+trigger:
+  branch:
     - stable
   event:
     - push
 
 depends_on:
-  - scan
+  - Check-In
 ...

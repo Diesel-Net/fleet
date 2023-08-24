@@ -1,34 +1,35 @@
 - name: ubuntu
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-ubuntu.git"
-  version: 3.0.1
+  version: 3.1.0
 
 - name: application
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-application.git"
-  version: 2.1.0
+  version: 2.1.1
 
 - name: docker
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-docker.git"
-  version: 2.0.3
+  version: 2.0.4
 
 - name: traefik
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-traefik.git"
-  version: 2.3.2
+  version: 2.3.4
 
 - name: fluentd
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-fluentd.git"
-  version: 1.0.0
+  version: 1.0.1
 
 - name: grafana-agent
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-grafana-agent.git"
-  version: development
+  version: 1.0.0
 
 - name: swarm-cronjob
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-swarm-cronjob.git"
-  version: development
+  version: 1.0.1
+

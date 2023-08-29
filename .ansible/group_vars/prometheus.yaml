@@ -1,3 +1,0 @@
-prometheus_url: https://prometheus.diesel.net
-prometheus_username: '{{ lookup("env", "PROMETHEUS_USERNAME") }}'
-prometheus_password: '{{ lookup("env", "PROMETHEUS_PASSWORD") }}'

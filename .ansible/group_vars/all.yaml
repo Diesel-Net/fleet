@@ -1,2 +1,10 @@
 ansible_user: automation
 ansible_python_interpreter: /usr/bin/python3
+
+loki_url: https://loki.diesel.net
+loki_username: '{{ lookup("env", "LOKI_USERNAME") }}'
+loki_password: '{{ lookup("env", "LOKI_PASSWORD") }}'
+
+prometheus_url: https://prometheus.diesel.net
+prometheus_username: '{{ lookup("env", "PROMETHEUS_USERNAME") }}'
+prometheus_password: '{{ lookup("env", "PROMETHEUS_PASSWORD") }}'

@@ -14,7 +14,9 @@ traefik_acme_resolvers:
     challenge: DNS-01
     email: '{{ lookup("env", "ACME_EMAIL") }}'
     provider: cloudflare
-    dns_resolver: 192.168.50.4:53
+    dns_resolvers: 
+      - 1.1.1.1:53
+      - 192.168.50.4:53
 
 
 # for the traefik dashboard

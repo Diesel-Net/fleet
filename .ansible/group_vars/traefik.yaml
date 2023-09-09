@@ -16,7 +16,6 @@ traefik_acme_resolvers:
     provider: cloudflare
     resolvers:
       - 1.1.1.1:53
-      - 192.168.50.4:53
 
 
 # for the traefik dashboard

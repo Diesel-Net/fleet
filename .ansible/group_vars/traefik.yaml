@@ -15,8 +15,8 @@ traefik_acme_resolvers:
     email: '{{ lookup("env", "ACME_EMAIL") }}'
     provider: cloudflare
     dns_resolvers: 
-      - 1.1.1.1:53
       - 192.168.50.4:53
+      - 1.1.1.1:53
 
 
 # for the traefik dashboard

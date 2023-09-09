@@ -9,7 +9,8 @@ traefik_config:
           certresolver: cloudflare
           domains:
             - main: dev.kiwi-labs.net
-              sans: '*.dev.kiwi-labs.net'
+              sans: 
+                - '*.dev.kiwi-labs.net'
     services:
       ups-backend:
         loadBalancer:

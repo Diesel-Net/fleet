@@ -16,7 +16,7 @@
 - name: traefik
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-traefik.git"
-  version: 2.3.4
+  version: 2.3.5
 
 - name: fluentd
   scm: git

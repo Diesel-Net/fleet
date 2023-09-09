@@ -15,4 +15,4 @@ traefik_config:
       ups-backend:
         loadBalancer:
           servers:
-            - url: https://ups.diesel.net
+            - url: https://192.168.50.10

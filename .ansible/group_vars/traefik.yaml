@@ -24,7 +24,7 @@ traefik_cert_resolver: step-ca
 # dashboard basic-auth password
 traefik_htpasswd: '{{ lookup("env", "TRAEFIK_HTPASSWD") }}'
 
-# Add IP addresses or any proxies along the way (enables proxy chaining)
+# trust X-Forwarded-* Headers from specific IPs along the way (enables proxy chaining)
 traefik_trusted_ips:
   - 10.10.0.1/24
   - 10.10.10.1/24

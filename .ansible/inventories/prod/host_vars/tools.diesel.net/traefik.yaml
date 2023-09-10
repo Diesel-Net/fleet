@@ -64,7 +64,7 @@ traefik_config:
       nas-backend:
         loadBalancer:
           servers:
-            - url: https://nas.diesel.net
+            - url: https://nas.diesel.net:5001
       cisco-switch-backend:
         loadBalancer:
           servers:

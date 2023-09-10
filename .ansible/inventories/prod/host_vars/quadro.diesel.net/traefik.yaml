@@ -1,1 +1,18 @@
 traefik_dashboard: yes
+traefik_config:
+  http:
+    routers:
+      plex-frontend:
+        rule: Host(`plex.kiwi-labs.net`)
+        service: plex-backend
+        tls:
+          certresolver: cloudflare
+          domains:
+            - main: kiwi-labs.net
+              sans: 
+                - '*.kiwi-labs.net'
+    services:
+      plex-backend:
+        loadBalancer:
+          servers:
+            - url: https://plex.diesel.net:32400

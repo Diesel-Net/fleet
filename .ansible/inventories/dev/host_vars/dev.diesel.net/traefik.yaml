@@ -1,18 +1,1 @@
 traefik_dashboard: yes
-traefik_config: 
-  http:
-    routers:
-      ups-frontend:
-        rule: Host(`ups.dev.kiwi-labs.net`)
-        service: ups-backend
-        tls:
-          certresolver: cloudflare
-          domains:
-            - main: dev.kiwi-labs.net
-              sans: 
-                - '*.dev.kiwi-labs.net'
-    services:
-      ups-backend:
-        loadBalancer:
-          servers:
-            - url: https://ups.diesel.net

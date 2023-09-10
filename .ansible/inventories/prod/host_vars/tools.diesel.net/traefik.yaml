@@ -11,8 +11,74 @@ traefik_config:
             - main: kiwi-labs.net
               sans: 
                 - '*.kiwi-labs.net'
+      nas-frontend:
+        rule: Host(`nas.kiwi-labs.net`)
+        service: nas-backend
+        tls:
+          certresolver: cloudflare
+          domains:
+            - main: kiwi-labs.net
+              sans: 
+                - '*.kiwi-labs.net'
+      cisco-switch:
+        rule: Host(`cisco.switch.kiwi-labs.net`)
+        service: cisco-switch-backend
+        tls:
+          certresolver: cloudflare
+          domains:
+            - main: switch.kiwi-labs.net
+              sans: 
+                - '*.switch.kiwi-labs.net'
+      tplink-switch:
+        rule: Host(`tplink.switch.kiwi-labs.net`)
+        service: tplink-switch-backend
+        tls:
+          certresolver: cloudflare
+          domains:
+            - main: switch.kiwi-labs.net
+              sans: 
+                - '*.switch.kiwi-labs.net'
+      ap:
+        rule: Host(`ap.kiwi-labs.net`)
+        service: ap-backend
+        tls:
+          certresolver: cloudflare
+          domains:
+            - main: kiwi-labs.net
+              sans: 
+                - '*.kiwi-labs.net'
+      modem:
+        rule: Host(`modem.kiwi-labs.net`)
+        service: modem-backend
+        tls:
+          certresolver: cloudflare
+          domains:
+            - main: kiwi-labs.net
+              sans: 
+                - '*.kiwi-labs.net'
     services:
       ups-backend:
         loadBalancer:
           servers:
             - url: https://ups.diesel.net
+      nas-backend:
+        loadBalancer:
+          servers:
+            - url: https://nas.diesel.net
+      cisco-switch-backend:
+        loadBalancer:
+          servers:
+            - url: https://cisco.switch.diesel.net
+      tplink-switch-backend:
+        loadBalancer:
+          servers:
+            - url: https://tplink.switch.diesel.net
+      ap-backend:
+        loadBalancer:
+          servers:
+            - url: https://ap.diesel.net
+      modem-backend:
+        loadBalancer:
+          servers:
+            - url: https://modem.diesel.net
+

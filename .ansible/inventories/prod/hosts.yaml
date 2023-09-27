@@ -1,6 +1,4 @@
 all:
-  hosts:
-    dc.diesel.net:
 
   children:
 

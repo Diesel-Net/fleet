@@ -26,6 +26,7 @@ steps:
   - name: Check-In (prod)
     image: docker.nexus.diesel.net/drone-ansible:7.2.0
     environment:
+      ANSIBLE_DEBUG: '1'
       CLOUD_INIT_USERNAME:
         from_secret: cloud_init_username
       CLOUD_INIT_PASSWORD:

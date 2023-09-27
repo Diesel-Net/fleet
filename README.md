@@ -31,7 +31,7 @@ You will need the following installed:
 
 1. Install Ansible roles.
    ```zsh
-   ansible-galaxy install --role-file .ansible/roles/check-in_requirements.yaml --roles-path .ansible/roles
+   ansible-galaxy install --force --role-file .ansible/roles/check-in_requirements.yaml --roles-path .ansible/roles
    ```
 
 1. Update all the Ubuntu hosts's Apt packages and reboot if necessary.

@@ -2,6 +2,10 @@
   strategy: linear
   tasks:
     - include_role:
+        name: ubuntu
+        tasks_from: configure_apt_proxy
+
+    - include_role:
         name: docker
         tasks_from: install
 

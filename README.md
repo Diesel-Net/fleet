@@ -6,10 +6,10 @@ Leveraging Docker Engine's built-in [Swarm Mode](https://docs.docker.com/engine/
 ## Checking-In New Hosts
 To add a new host (or set of hosts) create a new local branch name with the pattern `check-in/*`, add the new hosts and their configuration to the inventory, then push. Please delete your `check-in/*` branch after merging.
 
-## Bootstrap fleet
+## Bootstrapping Hosts
 Pushes to `stable` branches will trigger the entire fleet to be bootstrapped.
 
-## Update host packages
+## Updating Hosts
 You will need the following installed:
 >Python 3.11+<br>
 

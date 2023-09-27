@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: docker
-name: Check-In Test
+name: Check-In
 concurrency:
   limit: 1
 
@@ -18,12 +18,21 @@ steps:
       private_key:
         from_secret: automation_id_rsa
 
+  - name: Check-In (prod)
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
+    settings:
+      inventory: .ansible/inventories/prod
+      galaxy: .ansible/roles/check-in_requirements.yaml
+      playbook: .ansible/check-in.yaml
+      vault_password:
+        from_secret: ansible_vault_password 
+      private_key:
+        from_secret: automation_id_rsa
+
 
 trigger:
   branch:
     - check-in/*
-    - feature/*
-    - bugfix/*
   event:
     - push
 
@@ -70,42 +79,13 @@ steps:
 
 trigger:
   branch:
-    - check-in/*
     - feature/*
     - bugfix/*
   event:
     - push
 
-depends_on:
-  - Check-In Test
-
 ---
-kind: pipeline
-type: docker
-name: Check-In
-concurrency:
-  limit: 1
 
-steps:
-
-  - name: Check-In (prod)
-    image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    settings:
-      inventory: .ansible/inventories/prod
-      galaxy: .ansible/roles/check-in_requirements.yaml
-      playbook: .ansible/check-in.yaml
-      vault_password:
-        from_secret: ansible_vault_password 
-      private_key:
-        from_secret: automation_id_rsa
-
-trigger:
-  branch:
-    - stable
-  event:
-    - push
-
----
 kind: pipeline
 type: docker
 name: Bootstrap
@@ -152,6 +132,4 @@ trigger:
   event:
     - push
 
-depends_on:
-  - Check-In
 ...

@@ -1,18 +1,10 @@
-- hosts: all
-  strategy: linear
-  vars:
-    ansible_user: "{{ lookup('env', 'CLOUD_INIT_USERNAME') }}"
-    ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASSWORD') }}"
-    ansible_sudo_pass: "{{ ansible_ssh_pass }}"
-  tasks:
-    - include_role:
-        name: ubuntu
-        tasks_from: configure
-
-
 - hosts: swarm_manager
   strategy: linear
   tasks:
+    - include_role:
+        name: ubuntu
+        tasks_from: configure_apt_proxy
+
     - include_role:
         name: docker
         tasks_from: install

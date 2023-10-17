@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: docker
-name: Check-In Test
+name: Check-In
 concurrency:
   limit: 1
 
@@ -9,8 +9,29 @@ steps:
 
   - name: Check-In (dev)
     image: docker.nexus.diesel.net/drone-ansible:7.2.0
+    environment:
+      CLOUD_INIT_USERNAME:
+        from_secret: cloud_init_username
+      CLOUD_INIT_PASSWORD:
+        from_secret: cloud_init_password
     settings:
       inventory: .ansible/inventories/dev
+      galaxy: .ansible/roles/check-in_requirements.yaml
+      playbook: .ansible/check-in.yaml
+      vault_password:
+        from_secret: ansible_vault_password 
+      private_key:
+        from_secret: automation_id_rsa
+
+  - name: Check-In (prod)
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
+    environment:
+      CLOUD_INIT_USERNAME:
+        from_secret: cloud_init_username
+      CLOUD_INIT_PASSWORD:
+        from_secret: cloud_init_password
+    settings:
+      inventory: .ansible/inventories/prod
       galaxy: .ansible/roles/check-in_requirements.yaml
       playbook: .ansible/check-in.yaml
       vault_password:
@@ -22,8 +43,6 @@ steps:
 trigger:
   branch:
     - check-in/*
-    - feature/*
-    - bugfix/*
   event:
     - push
 
@@ -39,10 +58,6 @@ steps:
   - name: bootstrap (dev)
     image: docker.nexus.diesel.net/drone-ansible:7.2.0
     environment:
-      CLOUD_INIT_USERNAME:
-        from_secret: cloud_init_username
-      CLOUD_INIT_PASSWORD:
-        from_secret: cloud_init_password
       ACME_EMAIL:
         from_secret: acme_email
       CF_API_EMAIL:
@@ -70,42 +85,13 @@ steps:
 
 trigger:
   branch:
-    - check-in/*
     - feature/*
     - bugfix/*
   event:
     - push
 
-depends_on:
-  - Check-In Test
-
 ---
-kind: pipeline
-type: docker
-name: Check-In
-concurrency:
-  limit: 1
 
-steps:
-
-  - name: Check-In (prod)
-    image: docker.nexus.diesel.net/drone-ansible:7.2.0
-    settings:
-      inventory: .ansible/inventories/prod
-      galaxy: .ansible/roles/check-in_requirements.yaml
-      playbook: .ansible/check-in.yaml
-      vault_password:
-        from_secret: ansible_vault_password 
-      private_key:
-        from_secret: automation_id_rsa
-
-trigger:
-  branch:
-    - stable
-  event:
-    - push
-
----
 kind: pipeline
 type: docker
 name: Bootstrap
@@ -117,10 +103,6 @@ steps:
   - name: Bootstrap (prod)
     image: docker.nexus.diesel.net/drone-ansible:7.2.0
     environment:
-      CLOUD_INIT_USERNAME:
-        from_secret: cloud_init_username
-      CLOUD_INIT_PASSWORD:
-        from_secret: cloud_init_password
       ACME_EMAIL:
         from_secret: acme_email
       CF_API_EMAIL:
@@ -152,6 +134,4 @@ trigger:
   event:
     - push
 
-depends_on:
-  - Check-In
 ...

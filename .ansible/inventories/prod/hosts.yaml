@@ -1,4 +1,5 @@
 all:
+
   children:
 
     swarm_manager:
@@ -7,7 +8,7 @@ all:
         prod.diesel.net:
         drone.diesel.net:
         tools.diesel.net:
-        pterodactyl.diesel.net:
+        #pterodactyl.diesel.net:
         quadro.diesel.net:
         gh-actions.diesel.net:  
 
@@ -22,9 +23,9 @@ all:
       hosts:
 
         prod.diesel.net:
-        drone.diesel.net:
+        drone.diesel.net: 
         tools.diesel.net:
-        pterodactyl.diesel.net:
+        #pterodactyl.diesel.net:
         quadro.diesel.net:
         gh-actions.diesel.net:
 
@@ -34,6 +35,6 @@ all:
         prod.diesel.net:
         drone.diesel.net:
         tools.diesel.net:
-        pterodactyl.diesel.net:
+        #pterodactyl.diesel.net:
         quadro.diesel.net:
         gh-actions.diesel.net:

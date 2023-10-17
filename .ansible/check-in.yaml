@@ -1,7 +1,19 @@
 - hosts: all
   strategy: linear
+  gather_facts: no
   tasks:
 
     - include_role:
         name: ubuntu
         tasks_from: scan_host
+
+- hosts: all
+  strategy: linear
+  vars:
+    ansible_user: "{{ lookup('env', 'CLOUD_INIT_USERNAME') }}"
+    ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASSWORD') }}"
+    ansible_sudo_pass: "{{ ansible_ssh_pass }}"
+  tasks:
+    - include_role:
+        name: ubuntu
+        tasks_from: configure

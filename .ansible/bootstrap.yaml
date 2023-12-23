@@ -48,7 +48,7 @@
 
     - include_role:
         name: docker
-        tasks_from: stack deploy
+        tasks_from: stack_deploy
 
 
 

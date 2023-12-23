@@ -38,3 +38,14 @@ all:
         #pterodactyl.diesel.net:
         quadro.diesel.net:
         gh-actions.diesel.net:
+
+    grafana_agent:
+      hosts:
+
+        prod.diesel.net:
+        drone.diesel.net:
+        tools.diesel.net:
+        #pterodactyl.diesel.net:
+        quadro.diesel.net:
+        gh-actions.diesel.net:
+

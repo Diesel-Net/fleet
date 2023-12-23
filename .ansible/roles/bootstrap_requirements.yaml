@@ -26,7 +26,7 @@
 - name: grafana-agent
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-grafana-agent.git"
-  version: development
+  version: 1.0.1
 
 - name: swarm-cronjob
   scm: git

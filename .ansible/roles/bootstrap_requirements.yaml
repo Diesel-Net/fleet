@@ -21,7 +21,7 @@
 - name: fluentd
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-fluentd.git"
-  version: 1.0.2
+  version: 1.0.3
 
 - name: grafana-agent
   scm: git

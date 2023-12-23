@@ -20,3 +20,8 @@ all:
       hosts:
 
         dev.diesel.net:
+
+    grafana_agent:
+      hosts:
+
+        dev.diesel.net:

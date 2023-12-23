@@ -13,5 +13,7 @@ services:
         - "swarm.cronjob.enable=true"
         - "swarm.cronjob.schedule=0 */1 * * *" # hourly
         - "swarm.cronjob.skip-running=false"
+        - "swarm.cronjob.registry-auth=true"
+        - "swarm.cronjob.query-registry=true"
       restart_policy:
         condition: none

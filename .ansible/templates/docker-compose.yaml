@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   
-  prune-node:
+  prune_job:
     image: docker
     command: "docker system prune -f"
     volumes:

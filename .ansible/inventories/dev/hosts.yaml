@@ -10,18 +10,3 @@ all:
       hosts:
 
         dev.diesel.net:
-
-    fluentd:
-      hosts:
-
-        dev.diesel.net:
-
-    swarm_cronjob:
-      hosts:
-
-        dev.diesel.net:
-
-    grafana_agent:
-      hosts:
-
-        dev.diesel.net:

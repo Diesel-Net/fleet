@@ -11,7 +11,7 @@ services:
       mode: global
       labels:
         - "swarm.cronjob.enable=true"
-        - "swarm.cronjob.schedule=0 6 * * 1" # monday at 6am
+        - "swarm.cronjob.schedule=0 */1 * * *" # hourly
         - "swarm.cronjob.skip-running=false"
       restart_policy:
         condition: none

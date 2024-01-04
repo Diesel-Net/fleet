@@ -10,8 +10,8 @@ all:
         tools.diesel.net:
         pterodactyl.diesel.net:
         quadro.diesel.net:
-        gh-actions.diesel.net:  
-
+        gh-actions.diesel.net:
+        dc.diesel.net:
           
     nvidia:
       hosts:

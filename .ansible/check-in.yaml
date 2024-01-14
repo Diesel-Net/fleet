@@ -1,8 +1,6 @@
 - hosts: all
   strategy: linear
   gather_facts: no
-  environment:
-    ANSIBLE_DEBUG: 1
   tasks:
 
     - include_role:
@@ -11,9 +9,6 @@
 
 - hosts: all
   strategy: linear
-  gather_facts: no
-  environment:
-    ANSIBLE_DEBUG: 1
   vars:
     ansible_user: "{{ lookup('env', 'CLOUD_INIT_USERNAME') }}"
     ansible_ssh_pass: "{{ lookup('env','CLOUD_INIT_PASSWORD') }}"

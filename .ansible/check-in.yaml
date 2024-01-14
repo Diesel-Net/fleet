@@ -11,6 +11,7 @@
 
 - hosts: all
   strategy: linear
+  gather_facts: no
   environment:
     ANSIBLE_DEBUG: 1
   vars:

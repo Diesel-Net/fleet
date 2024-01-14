@@ -56,6 +56,25 @@ traefik_config:
             - main: kiwi-labs.net
               sans: 
                 - '*.kiwi-labs.net'
+
+      pve:
+        rule: Host(`pve.kiwi-labs.net`)
+        service: pve-backend
+        tls:
+          certresolver: cloudflare
+          domains:
+            - main: kiwi-labs.net
+              sans:
+                - '*.kiwi-labs.net'
+      pfsense:
+        rule: Host(`pfsense.kiwi-labs.net`)
+        service: pfsense-backend
+        tls:
+          certresolver: cloudflare
+          domains:
+            - main: kiwi-labs.net
+              sans:
+                - '*.kiwi-labs.net'
     services:
       ups-backend:
         loadBalancer:
@@ -81,4 +100,12 @@ traefik_config:
         loadBalancer:
           servers:
             - url: https://modem.diesel.net
+      pve-backend:
+        loadBalancer:
+          servers:
+            - url: https://pve.diesel.net:8006
+      pfsense-backend:
+        loadBalancer:
+          servers:
+            - url: https://pfsense.diesel.net:8443
 

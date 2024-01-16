@@ -13,7 +13,6 @@
         name: docker
         tasks_from: swarm_init
 
-
 - hosts: nvidia
   strategy: linear
   tasks:

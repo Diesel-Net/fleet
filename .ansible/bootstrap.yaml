@@ -12,6 +12,8 @@
     - include_role:
         name: docker
         tasks_from: swarm_init
+      vars:
+        options: '{{ "" if options is not defined else options.get("swarm_init") }}'
 
 
 - hosts: nvidia

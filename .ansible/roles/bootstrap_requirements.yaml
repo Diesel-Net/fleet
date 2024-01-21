@@ -31,4 +31,4 @@
 - name: swarm-cronjob
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-swarm-cronjob.git"
-  version: 1.0.2
+  version: 1.0.3

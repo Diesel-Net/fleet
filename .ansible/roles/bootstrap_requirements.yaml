@@ -1,7 +1,7 @@
 - name: ubuntu
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-ubuntu.git"
-  version: 3.1.2
+  version: development
 
 - name: application
   scm: git
@@ -11,7 +11,7 @@
 - name: docker
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-docker.git"
-  version: 2.1.0
+  version: development
 
 - name: traefik
   scm: git

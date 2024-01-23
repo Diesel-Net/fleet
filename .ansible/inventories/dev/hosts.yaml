@@ -6,6 +6,10 @@ all:
         
         dev.diesel.net:
 
+    nvidia:
+      hosts:
+        quadro.diesel.net:
+
     traefik:
       hosts:
 

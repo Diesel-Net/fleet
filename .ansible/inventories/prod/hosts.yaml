@@ -11,7 +11,7 @@ all:
         pterodactyl.diesel.net:
         quadro.diesel.net:
         gh-actions.diesel.net:
-        ns1.diesel.net:
+        dc.diesel.net:
           
     nvidia:
       hosts:

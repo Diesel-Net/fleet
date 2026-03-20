@@ -1,5 +1,5 @@
 traefik_dashboard: yes
-traefik_config: 
+traefik_config:
   http:
     routers:
       ups:
@@ -9,7 +9,7 @@ traefik_config:
           certresolver: cloudflare
           domains:
             - main: kiwi-labs.net
-              sans: 
+              sans:
                 - '*.kiwi-labs.net'
       nas:
         rule: Host(`nas.kiwi-labs.net`)
@@ -18,7 +18,7 @@ traefik_config:
           certresolver: cloudflare
           domains:
             - main: kiwi-labs.net
-              sans: 
+              sans:
                 - '*.kiwi-labs.net'
       cisco-switch:
         rule: Host(`cisco.switch.kiwi-labs.net`)
@@ -27,7 +27,7 @@ traefik_config:
           certresolver: cloudflare
           domains:
             - main: switch.kiwi-labs.net
-              sans: 
+              sans:
                 - '*.switch.kiwi-labs.net'
       tplink-switch:
         rule: Host(`tplink.switch.kiwi-labs.net`)
@@ -36,7 +36,7 @@ traefik_config:
           certresolver: cloudflare
           domains:
             - main: switch.kiwi-labs.net
-              sans: 
+              sans:
                 - '*.switch.kiwi-labs.net'
       ap:
         rule: Host(`ap.kiwi-labs.net`)
@@ -45,7 +45,7 @@ traefik_config:
           certresolver: cloudflare
           domains:
             - main: kiwi-labs.net
-              sans: 
+              sans:
                 - '*.kiwi-labs.net'
       pve:
         rule: Host(`pve.kiwi-labs.net`)
@@ -59,15 +59,6 @@ traefik_config:
       pfsense:
         rule: Host(`pfsense.kiwi-labs.net`)
         service: pfsense-backend
-        tls:
-          certresolver: cloudflare
-          domains:
-            - main: kiwi-labs.net
-              sans:
-                - '*.kiwi-labs.net'
-      murphcam:
-        rule: Host(`murphcam.kiwi-labs.net`)
-        service: murphcam-backend
         tls:
           certresolver: cloudflare
           domains:
@@ -107,8 +98,3 @@ traefik_config:
         loadBalancer:
           servers:
             - url: https://pfsense.diesel.net:8443
-      murphcam-backend:
-        loadBalancer:
-          servers:
-            - url: https://murphcam.diesel.net
-

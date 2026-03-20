@@ -8,10 +8,7 @@ all:
         prod.diesel.net:
         drone.diesel.net:
         tools.diesel.net:
-        pterodactyl.diesel.net:
         quadro.diesel.net:
-        gh-actions.diesel.net:
-        dc.diesel.net:
 
     nvidia:
       hosts:
